@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect, Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import './Login.css';
 
 class Login extends React.Component {
     constructor() {
@@ -59,14 +60,19 @@ class Login extends React.Component {
         let { user } = this.state;
         if (user.loggedIn) return <Redirect to="/" />;
         return (
-            <div>
-                <label>Username:</label>
-                <input name='username' value={username} onChange={this.handleChange}/>
+            <div className='main-container'>
+                <div className='input-container'>
+                    {/* <label>Username:</label> */}
+                    <div><input placeholder='Username' name='username' value={username} onChange={this.handleChange}/></div>
+                    
+                    {/* <label>Password:</label> */}
+                    <div><input type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/></div>
+                </div>
 
-                <label>Password:</label>
-                <input type='password' name='password' value={password} onChange={this.handleChange}/>
-                <button onClick={this.login}>Login</button>
-                <button onClick={this.register}>Register</button>
+                <div className='button-container'>
+                <button className='button' onClick={this.login}>Login</button>
+                <button className='button' onClick={this.register}>Register</button>
+                </div>
 
             </div>
         )

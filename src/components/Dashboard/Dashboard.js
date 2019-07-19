@@ -1,32 +1,32 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import './Dashboard.css';
 
 class Dashboard extends Component {
     constructor() {
         super()
         this.state = {
-            // user: {},
-            // redirect: false,
-            // error: false
+            user: {},
+            redirect: false,
         }
     }
-    // componentDidMount() {
-    //     if(!this.state.user.loggedIn) {
-    //         axios.get('/api/user')
-    //         .then(user => {
-    //             this.setState({user: user.data})
-    //         })
+    componentDidMount() {
+            axios.get('/api/user')
+            .then(res => {
+                this.setState({user: res.data})
+        }).catch(() => this.setState({redirect: true}))
+}
 
-    //     }
-    // }
+//with a 401 we cannot access the data with axios request.
 
     render() {
-        // let { user, error, redirect } = this.state;
-        // if (error || redirect) return <Redirect to="/login" />;
-        // if (!user.loggedIn) return <div>Loading</div>;
+        let { user, redirect } = this.state;
+        if (redirect) return <Redirect to="/login" />;
+        if (!user.loggedIn) return <div>Loading</div>;
         return (
-            <div>Dashboard</div>
+            <div className='main-container'>
+            </div>
         )
     }
 }
