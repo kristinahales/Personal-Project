@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 class Login extends React.Component {
     constructor() {
@@ -35,9 +35,9 @@ class Login extends React.Component {
             this.setState({username: '', password: ''})
             this.updateUser(user.data);
         })
-        .catch(err => {
+        .catch(() => {
             this.setState({username: '', password: ''})
-            alert('Sorry there is an error')
+            alert('Sorry username or password is incorrect. Please try again.')
         })
     }
 
@@ -53,6 +53,10 @@ class Login extends React.Component {
                 <label>Password:</label>
                 <input type='password' name='password' value={password} onChange={this.handleChange}/>
                 <button onClick={this.login}>Login</button>
+
+                <Link to='/register'>
+                <p>Not a member? Join now.</p>
+                </Link>
             </div>
         )
 
