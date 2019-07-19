@@ -13,6 +13,7 @@ class Login extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.updateUser = this.updateUser.bind(this);
         this.login = this.login.bind(this);
+        this.register = this.register.bind(this);
     }
 
     handleChange(e) {
@@ -40,6 +41,19 @@ class Login extends React.Component {
         })
     }
 
+    register() {
+        const {username, password} = this.state
+        axios.post('/api/register', {username, password})
+        .then(user => {
+            this.setState({ username: '', password: ''})
+            this.updateUser(user.data)
+        })
+        .catch(() => {
+            this.setState({ username: '', password: '' })
+            alert('Username is already taken!')
+        });
+    }
+
     render() {
         let {username, password} = this.state
         let { user } = this.state;
@@ -52,10 +66,8 @@ class Login extends React.Component {
                 <label>Password:</label>
                 <input type='password' name='password' value={password} onChange={this.handleChange}/>
                 <button onClick={this.login}>Login</button>
+                <button onClick={this.register}>Register</button>
 
-                <Link to='/register'>
-                <p>Not a member? Join now.</p>
-                </Link>
             </div>
         )
 
