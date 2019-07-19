@@ -10,15 +10,6 @@
     align-items: center;
 }
 
-.input-container {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 25px;
-}
-
 input::placeholder {
     text-align: center;
 }
@@ -26,7 +17,7 @@ input::placeholder {
 input {
     margin: 10px;
     font-size: 20px;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 .button {
@@ -38,6 +29,7 @@ input {
     font-size: 18px;
     border-radius: 8px;
 }
+
 @media (min-width: 700px) {
     .main-container {
         background-image: none;

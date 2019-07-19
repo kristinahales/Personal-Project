@@ -61,22 +61,15 @@ class Login extends React.Component {
         if (user.loggedIn) return <Redirect to="/" />;
         return (
             <div className='main-container'>
-                <div className='input-container'>
-                    {/* <label>Username:</label> */}
-                    <div><input placeholder='Username' name='username' value={username} onChange={this.handleChange}/></div>
-                    
-                    {/* <label>Password:</label> */}
-                    <div><input type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/></div>
-                </div>
+                <div><input placeholder='Username' name='username' value={username} onChange={this.handleChange}/></div>
+                <div><input type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/></div>
 
-                <div className='button-container'>
-                <button className='button' onClick={this.login}>Login</button>
-                <button className='button' onClick={this.register}>Register</button>
+                <div>
+                    <button className='button' onClick={this.login}>Login</button>
+                    <button className='button' onClick={this.register}>Register</button>
                 </div>
-
             </div>
         )
-
     }
 }
 
