@@ -26,7 +26,7 @@ module.exports = {
         let hash = await bcrypt.hash(password, salt);
         let [user] = await db.create_user([username, hash]);
         req.session.user = {username: user.username, id: user.id, loggedIn: true};
-        req.send(req.session.user);
+        res.send(req.session.user);
     },
     logout(req, res) {
         req.session.destroy();

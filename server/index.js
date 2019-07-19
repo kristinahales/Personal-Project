@@ -29,5 +29,6 @@ massive(CONNECTION_STRING)
 
 //User endpoints 
 app.post('/api/login', uc.login);
-// app.post('/api/register', uc.register);
+app.post('/api/register', uc.register);
+app.delete('/api/logout', uc.logout);
 
