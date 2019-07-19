@@ -6,8 +6,8 @@ import Register from './components/Register/Register';
 
 export default (
     <Switch>
-        <Route exact path='/' component={Dashboard}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/register' component={Register}/>
+        <Route exact path="/" component={Dashboard}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
     </Switch>
 );

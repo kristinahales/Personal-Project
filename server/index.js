@@ -2,6 +2,7 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
+const uc = require('./controllers/user_controller');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express()
@@ -25,4 +26,8 @@ massive(CONNECTION_STRING)
 })
 .catch(error => console.log(error))
 
+
+//User endpoints 
+app.post('/api/login', uc.login);
+// app.post('/api/register', uc.register);
 
