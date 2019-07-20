@@ -4,37 +4,41 @@ body {
     font-family: 'Darker Grotesque', sans-serif;
 }
 
-.header-container {
-        height: 5%;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        /* position: fixed; */
+.header-text{
+    color: red;
+    font-size: 70px;
 }
-    .nav-container {
-        display: flex;
-    }
-    
-    .nav-links {
-        margin-left: 10px;
-        color: red;
-        font-size: 60px;
-    }
 
-@media (max-width: 700px) {
+.header-container {
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-links {
+    margin-left: 30px;
+    color: red;
+    font-size: 40px;
+}
+
+@media (max-width: 600px) {
     .header-container {
-        position: fixed;
-        height: 50px;
+        height: 0px;
         width: 100vw;
     }
-    .nav-container {
-        display: flex;
+    .header-text {
+        color: white;
+        font-size: 30px;
+        margin-top: 80px;
     }
-    
+    .nav-container {
+        margin-top: 60px;
+    }
     .nav-links {
         margin-left: 10px;
         color: white;
-        font-size: 20px;
+        font-size: 25px;
     }
 }

@@ -25,7 +25,7 @@ class Dashboard extends Component {
         if (redirect) return <Redirect to="/login" />;
         if (!user.loggedIn) return <div>Loading</div>;
         return (
-            <div className='main-container'>
+            <div>
             </div>
         )
     }
