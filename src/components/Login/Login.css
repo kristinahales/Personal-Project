@@ -14,9 +14,15 @@ input::placeholder {
     text-align: center;
 }
 
-input {
-    margin: 10px;
-    font-size: 20px;
+.input1 {
+    margin-top: 70px;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+.input2 {
+    margin-top: 25px;
+    font-size: 18px;
     border-radius: 6px;
 }
 
@@ -26,17 +32,38 @@ input {
     margin: 20px 10px;
     border: none;
     background-color:rgb(80,85,81);
-    font-size: 18px;
+    font-size: 17px;
     border-radius: 8px;
+    color: white;
 }
 
 @media (min-width: 700px) {
     .main-container {
         background-image: none;
         background-color:  rgb(51,85,32);
-        
+        opacity: .8;
         width: 100vw;
         height: 100vh;
-        
+        display: flex;
+        justify-content: center;
     }
-} 
+
+    .image {
+        margin-top: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 600px;
+        width: 400px;
+    }
+
+    .input1 {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 700px) {
+    .image {
+        display: none;
+    }
+}

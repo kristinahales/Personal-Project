@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import './Login.css';
+import Header from './../Header/Header';
 
 class Login extends React.Component {
     constructor() {
@@ -61,8 +62,9 @@ class Login extends React.Component {
         if (user.loggedIn) return <Redirect to="/" />;
         return (
             <div className='main-container'>
-                <div><input placeholder='Username' name='username' value={username} onChange={this.handleChange}/></div>
-                <div><input type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/></div>
+                    <img className='image' src='https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'/>
+                    <div><input className='input1' placeholder='Username' name='username' value={username} onChange={this.handleChange}/></div>
+                    <div><input className='input2' type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/></div>
 
                 <div>
                     <button className='button' onClick={this.login}>Login</button>
