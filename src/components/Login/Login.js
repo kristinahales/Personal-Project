@@ -62,7 +62,6 @@ class Login extends React.Component {
         if (user.loggedIn) return <Redirect to="/" />;
         return (
             <div className='main-container'>
-                    <img className='image' src='https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'/>
                     
                     <div className='input-container'>
                         <input className='input1' placeholder='Username' name='username' value={username} onChange={this.handleChange}/>

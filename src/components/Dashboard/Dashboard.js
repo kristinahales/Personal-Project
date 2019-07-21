@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -25,7 +25,10 @@ class Dashboard extends Component {
         if (redirect) return <Redirect to="/login" />;
         if (!user.loggedIn) return <div>Loading</div>;
         return (
-            <div>
+            <div className='dashboard-container'>
+                <div><button className='dashboard-button'>Inventory</button></div>
+                <div><button className='dashboard-button'>Inventory</button></div>
+                <div><button className='dashboard-button'>Inventory</button></div>
             </div>
         )
     }

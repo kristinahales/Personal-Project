@@ -1,0 +1,20 @@
+.dashboard-container {
+    background-image: url('https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
+    background-size: cover;
+    /* background-color: rgba(248, 245, 245, 0.3);
+    background-blend-mode: lighten; */
+    background-position: center center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashboard-button {
+    margin: 20px;
+    width: 60vw;
+    height: 22vh;
+}
+
