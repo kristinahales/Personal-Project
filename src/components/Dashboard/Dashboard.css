@@ -1,18 +1,55 @@
-.dashboard-c{
+.dashboard-container{
     background-image: url('https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
     background-size: cover;
     background-position: center center;
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .dashboard-button {
-    margin: 20px;
-    width: 60vw;
-    height: 22vh;
+    background-color: rgb(175,61,63);
+    opacity: .9;
+    font-size: 30px;
+    color: white;
+    border-radius: 12px;
+    margin: 10px;
+    width: 40px;
+    height: 50px;
+}
+
+@media (min-width: 600px) {
+    .dashboard-container {
+        justify-content: center;
+    }
+    .dashboard-button-container {
+        display: flex;
+        flex-direction: row;
+        margin-top: 50px;
+    }
+    .dashboard-button {
+        height: 40vh;
+        width: 27vw;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .dashboard-button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .dashboard-button {
+        width: 60vw;
+        height: 15vh;
+        font-size: 20px;
+    }
 }
 
