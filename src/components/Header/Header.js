@@ -2,23 +2,25 @@ import React from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import CheeseburgerMenu from 'cheeseburger-menu';
+import axios from 'axios';
 
 class Header extends React.Component {
     constructor() {
         super()
         this.state = {
             menuOpen: false,
-            user: {},
-            redirect: false
-
         }
         this.openMenu = this.openMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
     }
 
-    // componentDidMount() {
+    logout = () => {
+        axios.delete('/api/logout')
+        .then(() => {
+            alert('Logout successful')
+        })
+    }
 
-    // }
     openMenu() {
         this.setState({
             menuOpen: true
@@ -45,14 +47,14 @@ class Header extends React.Component {
                         <div className='hamburger-links'><Link to="/projects" onClick={this.closeMenu}>Projects</Link></div>
                         <div className='hamburger-links'><Link to="/create" onClick={this.closeMenu}>Create</Link></div>
                         <div className='hamburger-links'><Link to="/orders" onClick={this.closeMenu}>Orders</Link></div>
-                        <div className='hamburger-links'><Link to="/logout" onClick={this.closeMenu}>Logout</Link></div>
+                        <div className='hamburger-links'><Link to="/login" onClick={this.logout}>Logout</Link></div>
                     </div>
                 </CheeseburgerMenu>
                                 
                 <nav className='nav-container'>
                     <Link to='/' className='nav-links'>Home</Link>
                     <Link to='/orders' className='nav-links'>Orders</Link>
-                    <Link to='/logout' className='nav-links'>Logout</Link>
+                    <Link to='/login' onClick={this.logout} className='nav-links'>Logout</Link>
                 </nav>
 
             </header>
