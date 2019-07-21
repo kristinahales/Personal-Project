@@ -18,7 +18,7 @@ class Dashboard extends Component {
         }).catch(() => this.setState({redirect: true}))
 }
 
-//with a 401 we cannot access the data with axios request.
+//with a 401 we cannot access the data with axios request.ch
 
     render() {
         let { user, redirect } = this.state;
