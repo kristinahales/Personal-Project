@@ -30,9 +30,11 @@ body {
     font-size: 40px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .header-container {
         position: fixed;
+        background-color: rgb(249,246,247);
+        height: 60px;
         width: 100vw;
     }
     .header-text {
@@ -43,10 +45,6 @@ body {
     }
 
     .nav-links {
-        margin-left: 10px;
-        margin-bottom: 25px;
-        color:rgb(2,176,215);
-        font-size: 30px;
-        font-weight: bold;
+        display: none;
     }
 }

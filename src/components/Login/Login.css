@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .main-container {
         background-image: url('https://kristinapersonalproject.s3-us-west-1.amazonaws.com/pawel-czerwinski-3k9PGKWt7ik-unsplash.jpg');
         width: 100vw;
@@ -23,7 +23,7 @@
         flex-direction: column;
     }
     .input1 {
-        margin-top: 70px;
+        margin-top: 120px;
         font-size: 18px;
         border-radius: 6px;
     }
@@ -39,7 +39,7 @@ input::placeholder {
     text-align: center;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .main-container {
         background-image: url('https://kristinapersonalproject.s3-us-west-1.amazonaws.com/pawel-czerwinski-3k9PGKWt7ik-unsplash.jpg');
         background-size: cover;
@@ -48,14 +48,6 @@ input::placeholder {
         display: flex;
         align-items: center;
         justify-content: space-around;
-    }
-    .image {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 60vh;
-        width: 35vw;
-        margin-top: 30px;
     }
     .input-container {
         display: flex;
