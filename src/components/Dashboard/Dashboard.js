@@ -25,10 +25,10 @@ class Dashboard extends Component {
         if (redirect) return <Redirect to="/login" />;
         if (!user.loggedIn) return <div>Loading</div>;
         return (
-            <div className='dashboard-container'>
-                <div><button className='dashboard-button'>Inventory</button></div>
-                <div><button className='dashboard-button'>Inventory</button></div>
-                <div><button className='dashboard-button'>Inventory</button></div>
+            <div className='dashboard-c'>
+                <div><Link to='/inventory'><button className='dashboard-button'>Inventory</button></Link></div>
+                <div><Link to='/projects'><button className='dashboard-button'>Projects</button></Link></div>
+                <div><Link to='/create'><button className='dashboard-button'>Create</button></Link></div>
             </div>
         )
     }

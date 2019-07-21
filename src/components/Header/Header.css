@@ -14,6 +14,8 @@ body {
     width: 100vw;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
 }
 .nav-container {
     display: flex;
@@ -29,12 +31,13 @@ body {
     #hamburger {
         display: none;
     }
-    .header-container {
-        justify-content: space-around;
-    }
+
     .header-text {
         margin-top: 50px;
-        margin-left: 5px;
+        margin-left: 10px;
+    }
+    .nav-links {
+        text-decoration: none;
     }
 }
 
@@ -45,10 +48,11 @@ body {
         width: 100vw;
         justify-content: space-around;
     }
+
     .header-text {
         color:rgb(2,176,215);
         font-size: 45px;
-        margin-left: 40px;
+        margin-left: 40%;
         font-weight: bold;
         margin-top: 20px;
     }
@@ -60,7 +64,12 @@ body {
     #hamburger {
         color: rgb(2,176,215);
         font-size: 35px;
-        margin-left: 20%;
+        margin-left: 10px; 
+    }
+    .hamburger-links {
+        font-size: 40px;
+        color: rgb(2,176,215);
+        padding: 10px;
     }
 
 }

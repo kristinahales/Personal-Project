@@ -1,10 +1,10 @@
 import React from 'react';
-import './projects.css'
+import './Projects.css'
 
 class Projects extends React.Component {
     render() {
         return (
-            <div className='page-container'>Projects</div>
+            <div>Projects</div>
         )
     }
 }
