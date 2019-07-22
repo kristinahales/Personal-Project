@@ -2,7 +2,10 @@ import React from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import CheeseburgerMenu from 'cheeseburger-menu';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {logout} from './../../redux/userReducer';
+
+
 
 class Header extends React.Component {
     constructor() {
@@ -15,10 +18,7 @@ class Header extends React.Component {
     }
 
     logout = () => {
-        axios.delete('/api/logout')
-        .then(() => {
-            alert('Logout successful')
-        })
+        this.props.logout();
     }
 
     openMenu() {
@@ -62,6 +62,9 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return state
+}
+export default connect(mapStateToProps, {logout})(Header);
 
 

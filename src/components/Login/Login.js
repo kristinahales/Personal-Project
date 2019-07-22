@@ -1,8 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import './Login.css';
-import Header from './../Header/Header';
+import {connect} from 'react-redux';
+import {login, register} from '../../redux/userReducer';
 
 class Login extends React.Component {
     constructor() {
@@ -10,10 +10,9 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            user: {}
         }
         this.handleChange = this.handleChange.bind(this);
-        this.updateUser = this.updateUser.bind(this);
+
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
     }
@@ -24,41 +23,32 @@ class Login extends React.Component {
         })
     }
 
-    updateUser(user) {
+    resetInput() {
         this.setState({
-            user
+            username: '',
+            password: ''
         })
     }
 
-    login() {
-        const {username, password} = this.state
-        axios.post('/api/login', {username, password})
-        .then(user => {
-            this.setState({username: '', password: ''})
-            this.updateUser(user.data);
-        })
+    login = () => {
+        this.props.login(this.state.username, this.state.password)
         .catch(() => {
-            this.setState({username: '', password: ''})
-            alert('Sorry username or password is incorrect. Please try again.')
+            alert('Invalid username or password');
+            this.resetInput();
         })
     }
 
     register() {
-        const {username, password} = this.state
-        axios.post('/api/register', {username, password})
-        .then(user => {
-            this.setState({ username: '', password: ''})
-            this.updateUser(user.data)
-        })
+        this.props.register(this.state.username, this.state.password)
         .catch(() => {
-            this.setState({ username: '', password: '' })
-            alert('Username is already taken!')
-        });
+            alert('Username is already taken.');
+            this.resetInput();
+        })
     }
 
     render() {
         let {username, password} = this.state
-        let { user } = this.state;
+        let { user } = this.props;
         if (user.loggedIn) return <Redirect to="/" />;
         return (
             <div className='main-container'>
@@ -77,4 +67,8 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+function mapStateToProps(state) {
+    return state.user;
+}
+
+export default connect(mapStateToProps, {login, register} )(Login);

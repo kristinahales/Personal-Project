@@ -1,29 +1,23 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {Redirect, Link} from 'react-router-dom';
 import './Dashboard.css';
+import {connect} from 'react-redux';
+import {getUser} from './../../redux/userReducer';
 
 class Dashboard extends Component {
-    constructor() {
-        super()
-        this.state = {
-            user: {},
-            redirect: false,
+
+    componentDidMount() {
+        if (!this.props.user.loggedIn) {
+        this.props.getUser();
         }
     }
-    componentDidMount() {
-            axios.get('/api/user')
-            .then(res => {
-                this.setState({user: res.data})
-        }).catch(() => this.setState({redirect: true}))
-}
 
-//with a 401 we cannot access the data with axios request.ch
 
     render() {
-        let { user, redirect } = this.state;
-        if (redirect) return <Redirect to="/login" />;
+        let { user, error, redirect } = this.props;
+        if (error || redirect) return <Redirect to="/login" />;
         if (!user.loggedIn) return <div>Loading</div>;
+        
         return (
             <div className='dashboard-container'>
                 <div className='dashboard-button-container'>
@@ -36,4 +30,8 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+    return state.user;
+}
+
+export default  connect(mapStateToProps, {getUser})(Dashboard);

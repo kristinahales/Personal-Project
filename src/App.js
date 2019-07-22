@@ -6,8 +6,8 @@ import routes from './routes';
 function App() {
   return (
     <div >
-    <Header />
-    {routes}
+      <Header />
+      {routes}
     </div>
   );
 }

@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const uc = require('./controllers/user_controller');
+const pc = require('./controllers/projects_controller');
 const authmw = require('./middleware/authCheck');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
@@ -33,3 +34,6 @@ app.post('/api/login', uc.login);
 app.post('/api/register', uc.register);
 app.delete('/api/logout', uc.logout);
 app.get('/api/user', authmw, uc.getUser);
+
+//project endpoints 
+app.get('/api/projects', pc.getAllProjects);
