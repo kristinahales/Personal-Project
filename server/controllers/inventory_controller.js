@@ -5,8 +5,6 @@ module.exports = {
         res.send(inventory);
     },
     async editQuantity(req, res) {
-        console.log(req.session.user.id);
-        console.log(req.params);
         let {inventoryId} = req.params;
         let {updatedQty} = req.body;
         let {id} = req.session.user
@@ -17,5 +15,11 @@ module.exports = {
             id
         ]); 
         res.send(inventory);
+    },
+    async getLowInventory(req, res) {
+        const db = req.app.get('db');
+        let {id} = req.session.user;
+        let lowInventory = await db.get_low_inventory([id]);
+        res.send(lowInventory);
     }
 }

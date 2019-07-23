@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import {Link} from 'react-router-dom';
 
 class Inventory extends Component {
     constructor() {
@@ -50,7 +50,7 @@ class Inventory extends Component {
                         return (
                             <div key={item.id}>
                             <h1>{item.name}</h1>
-                            <img src={item.image}/>
+                            <img src={item.image} alt='Craft supply'/>
 
                             <h1>{item.quantity}</h1>
                             
@@ -60,7 +60,10 @@ class Inventory extends Component {
                         )
                     })
                 }
-                
+                <br />
+                <Link to='/orders'>
+                <button>Need More Supplies</button>
+                </Link>
             </div>
         )
     }

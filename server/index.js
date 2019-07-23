@@ -45,3 +45,4 @@ app.get('/api/projects', pc.getAllProjects);
 //inventory endpoints 
 app.get('/api/inventory', ic.getAllInventory);
 app.put('/api/inventory/edit/:inventoryId', ic.editQuantity);
+app.get('/api/lowInventory', ic.getLowInventory);

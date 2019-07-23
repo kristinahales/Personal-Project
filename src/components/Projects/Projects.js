@@ -44,7 +44,9 @@ class Projects extends React.Component {
                     projects.map(project => {
                         return (
                             <div key={project.id}>
-                            <img src={project.image} height='200px' width='200px' onClick={this.openModal}/>
+                            <img src={project.image} height='200px' width='200px' onClick={this.openModal} alt='Child art and craft'/>
+                            {/* <button>Delete</button> */}
+
                             <Modal
                                 isOpen={this.state.modalIsOpen}
                                 contentLabel='example modal'>
