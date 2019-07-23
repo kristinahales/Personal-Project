@@ -40,6 +40,7 @@ app.get('/api/user', authmw, uc.getUser);
 
 //project endpoints 
 app.get('/api/projects', pc.getAllProjects);
+app.delete('/api/delete/project/:projectId', pc.deleteProject);
 
 
 //inventory endpoints 

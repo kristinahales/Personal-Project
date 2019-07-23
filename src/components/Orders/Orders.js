@@ -20,6 +20,7 @@ class Orders extends Component {
                 this.setState({ lowInventory: res.data, textValue: inventoryString })
             })
     }
+    
     handleChange(e) {
         this.setState({
             textValue: e.target.value

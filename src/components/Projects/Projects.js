@@ -14,14 +14,23 @@ class Projects extends React.Component {
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
     }
 
     componentDidMount() {
+        Modal.setAppElement('body');
         axios.get('/api/projects')
         .then(res => {
             this.setState({
                 projects: res.data
             })
+        })
+    }
+
+    deleteProject(projectId) {
+        axios.delete(`/api/delete/project/${projectId}`)
+        .then(res => {
+            this.setState({projects: res.data})
         })
     }
 
@@ -45,7 +54,7 @@ class Projects extends React.Component {
                         return (
                             <div key={project.id}>
                             <img src={project.image} height='200px' width='200px' onClick={this.openModal} alt='Child art and craft'/>
-                            {/* <button>Delete</button> */}
+                            <button onClick={() => this.deleteProject(project.id)}>Delete</button>
 
                             <Modal
                                 isOpen={this.state.modalIsOpen}
