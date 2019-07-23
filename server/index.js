@@ -4,8 +4,11 @@ const session = require('express-session');
 const massive = require('massive');
 const uc = require('./controllers/user_controller');
 const pc = require('./controllers/projects_controller');
+const ic = require('./controllers/inventory_controller');
+
 const authmw = require('./middleware/authCheck');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
+
 
 const app = express()
 app.use(express.json())
@@ -37,3 +40,8 @@ app.get('/api/user', authmw, uc.getUser);
 
 //project endpoints 
 app.get('/api/projects', pc.getAllProjects);
+
+
+//inventory endpoints 
+app.get('/api/inventory', ic.getAllInventory);
+app.put('/api/inventory/edit/:inventoryId', ic.editQuantity);

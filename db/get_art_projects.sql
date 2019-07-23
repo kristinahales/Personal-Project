@@ -1,3 +1,3 @@
-select * from projects
-where projects.user_id = $1
-or projects.is_public = true;
+SELECT * FROM projects
+WHERE projects.user_id = $1
+OR projects.is_public = true;

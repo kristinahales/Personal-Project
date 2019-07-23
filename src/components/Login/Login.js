@@ -17,6 +17,8 @@ class Login extends React.Component {
         this.register = this.register.bind(this);
     }
 
+
+
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
