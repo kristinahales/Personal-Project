@@ -11,6 +11,21 @@ module.exports = {
         const db = req.app.get('db');
         let projects = await db.delete_art_project([+projectId, id])
         res.send(projects);
-    }
+    },
+    async addArtProject(req, res) {
+        console.log('hit add art project', req.body, req.session.user)
+        let {name, image, instructions} = req.body;
+        let {id} = req.session.user;
+        const db = req.app.get('db');
+        let projects = await db.add_art_project([
+            name, 
+            image, 
+            instructions,
+            id
+        ]) 
+        console.log(projects)
+        res.send(projects)
+    },
+
 }
 

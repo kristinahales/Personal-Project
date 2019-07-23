@@ -2,7 +2,7 @@ import React from 'react';
 import './Projects.css'
 import axios from 'axios';
 import Modal from 'react-modal';
-
+import AddProject from './addProject';
 
 class Projects extends React.Component {
     constructor() {
@@ -15,6 +15,7 @@ class Projects extends React.Component {
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.deleteProject = this.deleteProject.bind(this);
+        this.addProject = this.addProject.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +27,17 @@ class Projects extends React.Component {
             })
         })
         .catch(err => console.log(err))
+    }
+
+    addProject(project) {
+        console.log('hit add project', project)
+        axios.post('/api/addProject', project)
+        .then(res => {
+            this.setState({
+                projects: res.data
+            })
+        })
+        .catch(err => console.log('error has occurred', err))
     }
 
     deleteProject(projectId) {
@@ -43,6 +55,7 @@ class Projects extends React.Component {
         this.setState({modalIsOpen: false})
     }   
 
+
     render() {
         const {projects} = this.state
 
@@ -55,7 +68,7 @@ class Projects extends React.Component {
                         return (
                             <div key={project.id}>
                             <img src={project.image} height='200px' width='200px' onClick={this.openModal} alt='Child art and craft'/>
-                          
+
                             <button onClick={() => this.deleteProject(project.id)}>Delete</button>
 
                             <Modal
@@ -63,6 +76,7 @@ class Projects extends React.Component {
                                 contentLabel='example modal'>
 
                                 <h1>{project.name}</h1> <h1>{project.instructions}</h1>
+                                <p>Supplies: </p>
                                 <button onClick={this.closeModal}>Close</button>
                             </Modal>
                                 
@@ -70,7 +84,7 @@ class Projects extends React.Component {
                         )
                     })
                 }
-                
+                <AddProject addProject={this.addProject} projects={projects}/>
             </div>
         )
     }

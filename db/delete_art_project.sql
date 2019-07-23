@@ -1,5 +1,5 @@
-delete from projects
-where id = $1;
+DELETE FROM projects
+WHERE id = $1;
 
-select * from projects 
-where user_id = $2;
+SELECT * FROM projects 
+WHERE user_id = $2;
