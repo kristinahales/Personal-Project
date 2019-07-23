@@ -51,7 +51,6 @@ class Inventory extends Component {
                             <div key={item.id}>
                             <h1>{item.name}</h1>
                             <img src={item.image} alt='Craft supply'/>
-
                             <h1>{item.quantity}</h1>
                             
                             <input placeholder='enter inventory number' onChange={this.handleChange}/>

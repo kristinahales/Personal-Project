@@ -19,12 +19,13 @@ class Projects extends React.Component {
 
     componentDidMount() {
         Modal.setAppElement('body');
-        axios.get('/api/projects')
+        axios.get(`/api/projects`)
         .then(res => {
             this.setState({
                 projects: res.data
             })
         })
+        .catch(err => console.log(err))
     }
 
     deleteProject(projectId) {
@@ -54,6 +55,7 @@ class Projects extends React.Component {
                         return (
                             <div key={project.id}>
                             <img src={project.image} height='200px' width='200px' onClick={this.openModal} alt='Child art and craft'/>
+                          
                             <button onClick={() => this.deleteProject(project.id)}>Delete</button>
 
                             <Modal

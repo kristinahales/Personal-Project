@@ -5,6 +5,7 @@ const massive = require('massive');
 const uc = require('./controllers/user_controller');
 const pc = require('./controllers/projects_controller');
 const ic = require('./controllers/inventory_controller');
+const nodemailer = require('nodemailer');
 
 const authmw = require('./middleware/authCheck');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -31,6 +32,46 @@ massive(CONNECTION_STRING)
 })
 .catch(error => console.log(error))
 
+//Form endpoints
+app.post('/api/form', (req, res) => {
+    nodemailer.createTestAccount((err, account) => {
+        const htmlEmail = `
+        <h4>Contact Details</h4>
+            <p>Name: ${req.body.name}</p>
+            <p>Email: ${req.body.email}</p>
+            <p>Classroom: ${req.body.classroom}</p>
+        <h4>Request for Supplies</h4>
+        <p>Supplies: ${req.body.textValue}</p>
+        <p>Additional Comments: ${req.body.message}</p>
+        `
+
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'marcelo.williamson49@ethereal.email',
+                pass: 'rW5YrtYKMPmQZqwnkg'
+            }
+        })
+
+        let mailOptions = {
+            from: 'test@testaccount.com',
+            to: 'marcelo.williamson49@ethereal.email',
+            replyTo: 'test@testaccount.com',
+            subject: 'Supplies Order',
+            text: req.body.message,
+            html: htmlEmail
+        }
+        
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                return console.log(err)
+            }
+            console.log('Message sent: %s', info.message)
+            console.log('Message URL: %s', nodemailer.getTestMessageUrl(info))
+        })
+    })
+})
 
 //User endpoints 
 app.post('/api/login', uc.login);
