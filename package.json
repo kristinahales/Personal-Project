@@ -13,7 +13,6 @@
     "nodemailer": "^6.3.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-modal": "^3.9.1",
     "react-redux": "^7.1.0",
     "react-responsive-modal": "^4.0.1",
     "react-router-dom": "^5.0.1",

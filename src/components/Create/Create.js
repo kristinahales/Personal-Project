@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Create extends Component {
     constructor() {
         super()
         this.state = {
             projects: [],
-            filteredProject: []
         }
-        this.filter = this.filter.bind(this);
     }
 
     componentDidMount() {
@@ -21,12 +21,8 @@ class Create extends Component {
         .catch(err => console.log(err))
     }
 
-    filter(projectId) {
-        axios.get(`/api/projects/filtered/${projectId}`)
-    }
-
-
     render() {
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
 
@@ -35,4 +31,11 @@ class Create extends Component {
         )
     }
 }
-export default Create;
+
+function mapStateToProps(state) {
+    return {
+        user:state.user
+    }
+}
+
+export default connect(mapStateToProps)(Create);

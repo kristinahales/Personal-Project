@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Orders extends Component {
     constructor() {
@@ -52,13 +54,16 @@ class Orders extends Component {
     };
 
     render() {
-        const {name, email, classroom, message, textValue} = this.state;
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+
+        const {name, email, classroom, message} = this.state;
         return (
             <div>Orders
                 <form>
                     <div><input placeholder='Name' name='name' value={name} onChange={this.handleInput}/></div>
                     <div><input placeholder='Classroom' name='classroom' value={classroom} onChange={this.handleInput}/></div>
                     <div><input placeholder='Email' name='email' value={email} onChange={this.handleInput}/></div>
+                    
                     <textarea rows='10' cols='30' placeholder='Additional Comments' name='message' value={message} onChange={this.handleChange}/>
                     <button onClick={this.handleSubmit}>Submit</button>
                 </form>
@@ -72,11 +77,19 @@ class Orders extends Component {
                             </div>
                         )
                     })
-
                 }
             </div>
         )
     }
 }
-export default Orders;
+
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Orders);
+
+
 

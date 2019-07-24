@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Inventory extends Component {
     constructor() {
@@ -42,6 +44,7 @@ class Inventory extends Component {
     
 
     render() {
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         const {inventory} = this.state
         return (
             <div>Inventory
@@ -67,7 +70,14 @@ class Inventory extends Component {
         )
     }
 }
-export default Inventory;
+
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Inventory);
 
 
 

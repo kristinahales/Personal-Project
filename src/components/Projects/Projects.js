@@ -3,6 +3,8 @@ import './Projects.css'
 import axios from 'axios';
 import Modal from 'react-responsive-modal';
 import AddProject from './addProject';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Projects extends React.Component {
     constructor() {
@@ -19,7 +21,6 @@ class Projects extends React.Component {
     }
 
     componentDidMount() {
-        // Modal.setAppElement('body');
         axios.get(`/api/projects`)
         .then(res => {
             this.setState({
@@ -30,7 +31,6 @@ class Projects extends React.Component {
     }
 
     addProject(project) {
-        console.log('hit add project', project)
         axios.post('/api/addProject', project)
         .then(res => {
             this.setState({
@@ -58,9 +58,9 @@ class Projects extends React.Component {
     renderProjects = () => {
         return this.state.projects.map((project, i) => {
             return (
-                <div onClick={() => this.openModal(i)}>
-                <h1>{project.name}</h1>
-                <img src={project.image} height='100px' width='100px'/>
+                <div >
+                <img onClick={() => this.openModal(i)} src={project.image} height='100px' width='100px'/>
+                <button onClick={() => this.deleteProject(project.id)}>Delete</button>
                 </div>
             );
         });
@@ -78,6 +78,7 @@ class Projects extends React.Component {
         }
     }
     render() {
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         const {open} = this.state
 
         return (
@@ -96,5 +97,10 @@ class Projects extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
 
-export default Projects;
+export default connect(mapStateToProps)(Projects);

@@ -2,21 +2,10 @@ import React, {Component} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import './Dashboard.css';
 import {connect} from 'react-redux';
-import {getUser} from './../../redux/userReducer';
 
 class Dashboard extends Component {
-
-    componentDidMount() {
-        if (!this.props.user.loggedIn) {
-        this.props.getUser();
-        }
-    }
-
-
     render() {
-        let { user, error, redirect } = this.props;
-        if (error || redirect) return <Redirect to="/login" />;
-        if (!user.loggedIn) return <div>Loading</div>;
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         
         return (
             <div className='dashboard-container'>
@@ -31,7 +20,9 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-    return state.user;
+    return {
+        user:state.user
+    }
 }
 
-export default  connect(mapStateToProps, {getUser})(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
