@@ -1,7 +1,7 @@
 import React from 'react';
 import './Projects.css'
 import axios from 'axios';
-import Modal from 'react-modal';
+import Modal from 'react-responsive-modal';
 import AddProject from './addProject';
 
 class Projects extends React.Component {
@@ -9,8 +9,8 @@ class Projects extends React.Component {
         super()
         this.state = {
             projects: [],
-            selectedItem: '',
-            modalIsOpen: false
+            selectedItem: null,
+            open: false
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -19,7 +19,7 @@ class Projects extends React.Component {
     }
 
     componentDidMount() {
-        Modal.setAppElement('body');
+        // Modal.setAppElement('body');
         axios.get(`/api/projects`)
         .then(res => {
             this.setState({
@@ -47,44 +47,50 @@ class Projects extends React.Component {
         })
     }
 
-    openModal() {
-        this.setState({modalIsOpen: true})
+    openModal(i) {
+        this.setState({open: true, selectedItem: i})
     }
 
     closeModal() {
-        this.setState({modalIsOpen: false})
+        this.setState({open: false})
     }   
 
+    renderProjects = () => {
+        return this.state.projects.map((project, i) => {
+            return (
+                <div onClick={() => this.openModal(i)}>
+                <h1>{project.name}</h1>
+                <img src={project.image} height='100px' width='100px'/>
+                </div>
+            );
+        });
+    }
 
+    renderModal = () => {
+        if(this.state.selectedItem !== null) {
+            const project = this.state.projects[this.state.selectedItem];
+            return (
+                <div>
+                    <h1>{project.name}</h1>
+                    <h1>{project.instructions}</h1>
+                </div>
+            );
+        }
+    }
     render() {
-        const {projects} = this.state
+        const {open} = this.state
 
         return (
             <div>
                 <h1>Projects</h1>
+                <div>{this.renderProjects()}</div>
+                <Modal 
+                    open={open} onClose={this.closeModal} center>
+                    <div>{this.renderModal()}</div>
 
-                {
-                    projects.map(project => {
-                        return (
-                            <div key={project.id}>
-                            <img src={project.image} height='200px' width='200px' onClick={this.openModal} alt='Child art and craft'/>
+                </Modal>
 
-                            <button onClick={() => this.deleteProject(project.id)}>Delete</button>
-
-                            <Modal
-                                isOpen={this.state.modalIsOpen}
-                                contentLabel='example modal'>
-
-                                <h1>{project.name}</h1> <h1>{project.instructions}</h1>
-                                <p>Supplies: </p>
-                                <button onClick={this.closeModal}>Close</button>
-                            </Modal>
-                                
-                            </div>
-                        )
-                    })
-                }
-                <AddProject addProject={this.addProject} projects={projects}/>
+                <AddProject addProject={this.addProject} projects={this.state.projects}/>
             </div>
         )
     }
