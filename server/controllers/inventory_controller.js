@@ -1,7 +1,8 @@
 module.exports = {
     async getAllInventory(req, res) {
+        let {id} = req.session.user
         const db = req.app.get('db');
-        let inventory = await db.get_inventory();
+        let inventory = await db.get_inventory([id]);
         res.send(inventory);
     },
     async editQuantity(req, res) {

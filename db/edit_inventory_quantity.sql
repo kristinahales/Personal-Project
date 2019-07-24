@@ -1,6 +1,7 @@
 UPDATE user_inventory
 SET quantity = $2
-WHERE inventory_id = $1;
+WHERE inventory_id = $1
+AND user_id = $3;
 
 SELECT * FROM inventory 
 LEFT JOIN user_inventory

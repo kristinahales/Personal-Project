@@ -37,11 +37,17 @@ class Inventory extends Component {
         .then(res => {
             console.log((res.data))
             this.setState({
-                inventory: res.data
+                inventory: res.data,
             })
         })
+        this.resetInput();
     }
     
+    resetInput = () => {
+        this.setState({
+            updatedQty: 0
+        })
+    }
 
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
