@@ -73,11 +73,22 @@ class Projects extends React.Component {
                 <div>
                     <h1>{project.name}</h1>
                     <h1>{project.instructions}</h1>
+                    {
+                        project.inventory.map(item => {
+                            return (
+                                <div>
+                                    <h1>{item.name}</h1>
+                                    <h1>{item.quantity}</h1>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             );
         }
     }
     render() {
+        console.log(this.state.projects)
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         const {open} = this.state
 

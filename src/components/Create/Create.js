@@ -12,7 +12,7 @@ class Create extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/projects`)
+        axios.get(`/api/filtered/projects`)
         .then(res => {
             this.setState({
                 projects: res.data
@@ -21,11 +21,14 @@ class Create extends Component {
         .catch(err => console.log(err))
     }
 
+
+
+
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
-
+                
 
             </div>
         )

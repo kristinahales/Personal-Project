@@ -83,6 +83,7 @@ app.get('/api/user', authmw, uc.getUser);
 app.get('/api/projects', pc.getAllProjects);
 app.delete('/api/delete/project/:projectId', pc.deleteProject);
 app.post('/api/addProject', pc.addArtProject);
+app.get('/api/filtered/projects', pc.filteredProjects);
 
 //inventory endpoints 
 app.get('/api/inventory', ic.getAllInventory);
