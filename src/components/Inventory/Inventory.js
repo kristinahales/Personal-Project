@@ -9,8 +9,7 @@ class Inventory extends Component {
         super() 
         this.state = {
             inventory: [],
-            updatedQty: 0,
-
+            updatedQty: ''
         }
         this.update = this.update.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -26,8 +25,9 @@ class Inventory extends Component {
     }
 
     handleChange(e) {
+        let {name, value} = e.target
         this.setState({
-            updatedQty: e.target.value
+            [name]: value
         })
     }
 
@@ -45,13 +45,13 @@ class Inventory extends Component {
     
     resetInput = () => {
         this.setState({
-            updatedQty: 0
+            updatedQty: ''
         })
     }
 
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        const {inventory} = this.state
+        const {inventory, updatedQty} = this.state
         return (
             <div>Inventory
                 {
@@ -62,7 +62,7 @@ class Inventory extends Component {
                             <img src={item.image} alt='Craft supply'/>
                             <h1>{item.quantity}</h1>
                             
-                            <input placeholder='enter inventory number' onChange={this.handleChange}/>
+                            <input placeholder='enter inventory number' name='updatedQty' value={updatedQty} onChange={this.handleChange}/>
                             <button onClick={() => this.update(item.id)}>Update</button>
                             </div>
                         )
