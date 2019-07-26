@@ -59,7 +59,7 @@ class Orders extends Component {
     };
 
     render() {
-        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
 
         const {name, email, classroom, message, textValue} = this.state;
         return (

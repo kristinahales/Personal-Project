@@ -1,21 +1,19 @@
 import React from 'react';
 import './Projects.css'
 import axios from 'axios';
-import Modal from 'react-responsive-modal';
 import AddProject from './addProject';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import './Projects.css';
+import Display from './Modal';
 
 class Projects extends React.Component {
     constructor() {
         super()
         this.state = {
             projects: [],
-            selectedItem: null,
-            open: false
         }
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+
         this.deleteProject = this.deleteProject.bind(this);
         this.addProject = this.addProject.bind(this);
     }
@@ -47,61 +45,11 @@ class Projects extends React.Component {
         })
     }
 
-    openModal(i) {
-        this.setState({open: true, selectedItem: i})
-    }
-
-    closeModal() {
-        this.setState({open: false})
-    }   
-
-    renderProjects = () => {
-        return this.state.projects.map((project, i) => {
-            return (
-                <div >
-                <img onClick={() => this.openModal(i)} src={project.image} height='100px' width='100px'/>
-                <button onClick={() => this.deleteProject(project.id)}>Delete</button>
-                </div>
-            );
-        });
-    }
-
-    renderModal = () => {
-        if(this.state.selectedItem !== null) {
-            const project = this.state.projects[this.state.selectedItem];
-            return (
-                <div>
-                    <h1>{project.name}</h1>
-                    <h1>{project.instructions}</h1>
-                    {
-                        project.inventory.map(item => {
-                            return (
-                                <div>
-                                    <h1>{item.name}</h1>
-                                    <h1>{item.quantity}</h1>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            );
-        }
-    }
     render() {
-        console.log(this.state.projects)
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        const {open} = this.state
-
         return (
             <div>
-                <h1>Projects</h1>
-                <div>{this.renderProjects()}</div>
-                <Modal 
-                    open={open} onClose={this.closeModal} center>
-                    <div>{this.renderModal()}</div>
-
-                </Modal>
-
+                <Display projects={this.state.projects} deleteProject={this.deleteProject}/>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
             </div>
         )
