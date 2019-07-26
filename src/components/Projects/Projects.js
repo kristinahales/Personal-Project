@@ -46,7 +46,7 @@ class Projects extends React.Component {
     }
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
                 <Display projects={this.state.projects} deleteProject={this.deleteProject}/>

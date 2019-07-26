@@ -24,8 +24,8 @@ class Display extends React.Component {
         return this.props.projects.map((project, i) => {
             return (
                 <div className='project-main-container'>
-                <img onClick={() => this.openModal(i)} src={project.image} height='100px' width='100px'/>
                 <i id='x' className="far fa-times-circle" onClick={() => this.props.deleteProject(project.id)}></i>
+                <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} height='80%' width='80%'/>
                 </div>
             );
         });
@@ -37,15 +37,15 @@ class Display extends React.Component {
             const project = this.props.projects[this.state.selectedItem];
             return (
                 <div>
-                    <h4>{project.name}</h4>
-                    <p>Instructions: {project.instructions}</p>
-                    <p>Supplies:</p>
+                    <h2 className='modal-text'>{project.name}</h2>
+                    <p className='modal-text'>Instructions: {project.instructions}</p>
+                    <p className='modal-text'>Supplies:</p>
                     {
                         project.inventory.map(item => {
                             return (
                                 <div>
                                     <ul>
-                                        <li>{item.name}: {item.quantity}</li>
+                                        <li className='modal-text'>{item.name}: {item.quantity}</li>
                                     </ul>
                                 </div>
                             )
@@ -60,14 +60,16 @@ class Display extends React.Component {
     render() {
         const {open} = this.state
         return (
-            <div className='pc'>
+            <div>
                 <h1 className='projects-header'>Art Projects</h1>
-                <div>{this.renderProjects()}</div>
-                <Modal 
-                    open={open} onClose={this.closeModal} center>
-                    <div>{this.renderModal()}</div>
+                <div>
+                    <div className='pc'>{this.renderProjects()}</div>
+                    <Modal 
+                        open={open} onClose={this.closeModal} center>
+                        <div>{this.renderModal()}</div>
 
-                </Modal>
+                    </Modal>
+                </div>
             </div>
         )
     }
