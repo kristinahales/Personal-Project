@@ -25,11 +25,19 @@ class Create extends Component {
 
 
     render() {
+        const {projects} = this.state
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
-                
-
+                {
+                    projects.map(item => {
+                        return (
+                            <div key={item.id}>
+                                <h1>{item.name}</h1>
+                            </div>
+                        )
+                    })
+                }
             </div>
         )
     }

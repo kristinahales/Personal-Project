@@ -1,0 +1,75 @@
+.main-orders-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.orders-header {
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: rgb(46,189,125);
+}
+
+.orders-text1 {
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(46,189,125);
+
+}
+.orders-text1, .orders-text {
+    margin: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(46,189,125);
+}
+
+
+.orders-input {
+    width: 67vw;
+    font-size: 20px;
+    text-align: left;
+    color: #3F3F3F;
+    border-radius: 8px;
+    border: 1px solid rgb(2,176,215);
+    box-shadow:  3px 3px 5px 6px #ccc;
+}
+
+.orders-button {
+    width: 30vw;
+    padding: 8px;
+    margin-top: 15px;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    background: rgb(2,176,215, .9);
+    border: 1px solid rgb(2,176,215);
+}
+
+
+@media (min-width: 800px) {
+    .orders-header {
+        font-size: 50px;
+    }
+    .orders-text1, .orders-text {
+        font-size: 35px;
+    }
+    .orders-input {
+        font-size: 35px;
+        width: 60vw;
+    }
+    .orders-button {
+        width: 25vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .orders-input {
+        width: 50vw;
+    }
+}

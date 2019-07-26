@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import './Orders.css'
 
 class Orders extends Component {
     constructor() {
@@ -58,18 +59,19 @@ class Orders extends Component {
     };
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
 
         const {name, email, classroom, message, textValue} = this.state;
         return (
-            <div>Orders
-                <form>
-                    <div><input placeholder='Name' name='name' value={name} onChange={this.handleChange}/></div>
-                    <div><input placeholder='Classroom' name='classroom' value={classroom} onChange={this.handleChange}/></div>
-                    <div><input placeholder='Email' name='email' value={email} onChange={this.handleChange}/></div>
-                    <textarea name='textValue' value={textValue} rows='15' cols='30' onChange={this.handleChange}/>
-                    <textarea rows='10' cols='30' placeholder='Additional Comments' name='message' value={message} onChange={this.handleChange}/>
-                    <button onClick={this.handleSubmit}>Submit</button>
+            <div>
+                <form className='main-orders-container'> 
+                    <div className='orders-header'>Order More Supplies</div>
+                    <div className='orders-text1'>Name:<br/><input className='orders-input' name='name' value={name} onChange={this.handleChange}/></div>
+                    <div className='orders-text'>Classroom:<br/><input className='orders-input' name='classroom' value={classroom} onChange={this.handleChange}/></div>
+                    <div className='orders-text'>Email:<br/><input className='orders-input' name='email' value={email} onChange={this.handleChange}/></div>
+                    <div className='orders-text'>Supplies:<br/><textarea className='orders-input' name='textValue' value={textValue} rows='5' cols='30' onChange={this.handleChange}/></div>
+                    <div className='orders-text'>Comments:<br/><textarea className='orders-input' rows='10' cols='30' name='message' value={message} onChange={this.handleChange}/></div>
+                    <div className='orders-text'><button className='orders-button' onClick={this.handleSubmit}>Submit</button></div>
                 </form>
             </div>
         )

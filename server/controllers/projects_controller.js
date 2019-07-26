@@ -13,7 +13,6 @@ module.exports = {
         res.send(projects);
     },
     async addArtProject(req, res) {
-        console.log('hit add art project', req.body, req.session.user)
         let {name, image, instructions} = req.body;
         let {id} = req.session.user;
         const db = req.app.get('db');

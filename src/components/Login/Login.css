@@ -1,5 +1,5 @@
 .main-container {
-    background-image: url('https://kristinapersonalproject.s3-us-west-1.amazonaws.com/pawel-czerwinski-3k9PGKWt7ik-unsplash.jpg');
+    background-image: url('https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -33,16 +33,13 @@
         font-size: 25px;
         height: 40px;
         border-radius: 6px;
+        text-align: center;
     }
     .input2 {
         margin-top: 25px;
     }
 }
 
-
-input::placeholder {
-    text-align: center;
-}
 
 @media (min-width: 700px) {
     .main-container {
