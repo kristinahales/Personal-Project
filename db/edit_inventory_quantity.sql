@@ -6,7 +6,8 @@ AND user_id = $3;
 SELECT * FROM inventory 
 LEFT JOIN user_inventory
 ON inventory.id = user_inventory.inventory_id
-WHERE user_id = $3;
+WHERE user_id = $3
+ORDER BY name ASC;
 
 
 
