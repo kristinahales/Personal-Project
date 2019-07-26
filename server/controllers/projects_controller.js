@@ -13,18 +13,19 @@ module.exports = {
         res.send(projects);
     },
     async addArtProject(req, res) {
-        let {name, image, instructions} = req.body;
+        let {name, image, instructions, inventory, quantity} = req.body;
         let {id} = req.session.user;
         const db = req.app.get('db');
-        let projects = await db.add_art_project([
+        let project = await db.add_art_project([
             name, 
             image, 
             instructions,
             id
         ]) 
-        console.log(projects)
-        res.send(projects)
+        let allProjects = await db.add_inventory_to_project([project[0].id, 1, 3, id])
+        res.send(allProjects);
     },
+
     async filteredProjects(req, res) {
         let {id} = req.session.user;
         const db = req.app.get('db');
@@ -45,4 +46,3 @@ function hasEnoughInventory(projectInventory, userInventory) {
     }
     return true;
 }
-

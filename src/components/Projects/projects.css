@@ -1,19 +1,20 @@
-.projects-header {
-    margin-top: 10px;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+.main-add-art-button {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 8px;
+    background: rgb(46,189,125, .8);
+    color: white;
+    margin: 10px;
 }
 
-.projects-header {
-    margin-top: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    text-decoration: underline;
-    color: rgb(232,94,90);
+.main-add-art-button-container {
+    background: rgb(249,246,247);
+    display: flex;
+    justify-content: flex-end;
 }
 
-.pc {
+.show-projects-container {
+    background: rgb(249,246,247);
     height: 100%;
     width: 100%;
     display: flex;
@@ -27,21 +28,24 @@
     flex-direction: column;
     flex: 0 1 180px;
     align-items: center;
-    border: 1px solid rgb(232,94,90);
-    width: 245px;
-    height: 250px;
+    border: 1px solid rgb(2,176,215);
+    box-shadow:  3px 3px 5px 6px #ccc;
+    width: 275px;
+    height: 275px;
     margin: 10px;
     border-radius: 8px;
 }
 #x {
     margin-left: 85%;
     margin-top: 3%;
-    font-size: 18px;
-    color: rgb(232,94,90);
+    font-size: 20px;
+    color: rgb(2,176,215);
 }
 
 .projects-image {
     border-radius: 8px;
+    height: 225px;
+    width: 140px;
 }
 
 .modal-text, .modal-text1 {
@@ -50,4 +54,25 @@
 
 .modal-text1 {
     font-size: 18px;
+}
+
+
+@media (min-width: 800px) {
+    .main-add-art-button {
+        padding: 15px;
+        font-size: 30px;
+        margin: 20px;
+    }
+    .project-main-container {
+        flex: 0 1 270px;
+        height: 385px;
+        width: 225px;
+    }
+    .projects-image {
+        height: 315px;
+        width: 225px;
+    }
+    #x {
+        font-size: 30px;
+    }
 }

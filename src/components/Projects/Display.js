@@ -25,7 +25,7 @@ class Display extends React.Component {
             return (
                 <div className='project-main-container'>
                 <i id='x' className="far fa-times-circle" onClick={() => this.props.deleteProject(project.id)}></i>
-                <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} height='80%' width='80%'/>
+                <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
                 </div>
             );
         });
@@ -43,7 +43,7 @@ class Display extends React.Component {
                     {
                         project.inventory.map(item => {
                             return (
-                                <div>
+                                <div key={item.id}>
                                     <ul>
                                         <li className='modal-text'>{item.name}: {item.quantity}</li>
                                     </ul>
@@ -61,15 +61,11 @@ class Display extends React.Component {
         const {open} = this.state
         return (
             <div>
-                <h1 className='projects-header'>Art Projects</h1>
-                <div>
-                    <div className='pc'>{this.renderProjects()}</div>
+                    <div className='show-projects-container'>{this.renderProjects()}</div>
                     <Modal 
                         open={open} onClose={this.closeModal} center>
                         <div>{this.renderModal()}</div>
-
                     </Modal>
-                </div>
             </div>
         )
     }

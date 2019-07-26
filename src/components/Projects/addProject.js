@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Modal from 'react-responsive-modal';
+import Select from './Select';
 
 class AddProject extends Component {
     constructor() {
@@ -6,18 +8,27 @@ class AddProject extends Component {
         this.state = {
             name: '',
             image: '',
-            instructions: ''
+            instructions: '',
+            open: false
         }
-        this.add = this.add.bind(this);
     }
+
     handleChange = (e) => {
         
         this.setState({
             [e.target.name]: e.target.value
         })
     } 
+    
+    openModal = () => {
+        this.setState({open: true})
+    }
 
-    add() {
+    closeModal = () => {
+        this.setState({open: false})
+    }   
+
+    addProject = () => {
         this.props.addProject({
             name: this.state.name,
             image: this.state.image, 
@@ -26,7 +37,7 @@ class AddProject extends Component {
         this.resetInput();
         
     }
-
+    
     resetInput() {
         this.setState({
             name: '',
@@ -36,13 +47,19 @@ class AddProject extends Component {
     }
 
     render() {
-        let {name, image, instructions} = this.state
+        let {name, image, instructions, open} = this.state
         return (
-            <div>
+            <div className='main-add-art-button-container'>
+                <button className='main-add-art-button' onClick={this.openModal}>Add Project to Collection</button>
+                <Modal 
+                    open={open} onClose={this.closeModal} center>
+
+                <Select projects={this.props.projects}/>
                 <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
                 <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
                 <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
-                <button onClick={this.add}>Add Project</button>
+                <button onClick={this.addProject}>Add Project</button>
+                </Modal>
             </div>
         )
     }

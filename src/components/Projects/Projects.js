@@ -1,11 +1,11 @@
 import React from 'react';
 import './Projects.css'
 import axios from 'axios';
-import AddProject from './addProject';
+import AddProject from './AddProject';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import './Projects.css';
-import Display from './Modal';
+import Display from './Display';
 
 class Projects extends React.Component {
     constructor() {
@@ -49,8 +49,8 @@ class Projects extends React.Component {
         // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
-                <Display projects={this.state.projects} deleteProject={this.deleteProject}/>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
+                <Display projects={this.state.projects} deleteProject={this.deleteProject}/>
             </div>
         )
     }

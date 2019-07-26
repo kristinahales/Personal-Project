@@ -11,3 +11,6 @@ select p.*,
 from projects as p
 WHERE p.user_id = $1
 OR p.is_public = true;
+
+
+
