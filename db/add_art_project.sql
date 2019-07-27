@@ -4,10 +4,6 @@ VALUES ($1, $2, $3, $4)
 returning*;
 
 
--- SELECT * FROM projects
--- WHERE projects.user_id = $4
--- OR projects.is_public = true;
-
 
 
 

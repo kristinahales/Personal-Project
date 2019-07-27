@@ -29,7 +29,7 @@ class Projects extends React.Component {
     }
 
     addProject(project) {
-        axios.post('/api/addProject', project)
+        return axios.post('/api/addProject', project)
         .then(res => {
             this.setState({
                 projects: res.data
@@ -46,7 +46,7 @@ class Projects extends React.Component {
     }
 
     render() {
-        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>

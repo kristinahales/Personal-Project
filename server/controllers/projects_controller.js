@@ -13,7 +13,9 @@ module.exports = {
         res.send(projects);
     },
     async addArtProject(req, res) {
-        let {name, image, instructions, inventory, quantity} = req.body;
+        console.log(req.body)
+        console.log(req.session.user.id)
+        let {name, image, instructions, inventory_id, quantity} = req.body;
         let {id} = req.session.user;
         const db = req.app.get('db');
         let project = await db.add_art_project([
@@ -22,7 +24,7 @@ module.exports = {
             instructions,
             id
         ]) 
-        let allProjects = await db.add_inventory_to_project([project[0].id, 1, 3, id])
+        let allProjects = await db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
         res.send(allProjects);
     },
 

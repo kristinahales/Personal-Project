@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-responsive-modal';
 import Select from './Select';
+import axios from 'axios';
 
 class AddProject extends Component {
     constructor() {
@@ -9,12 +10,24 @@ class AddProject extends Component {
             name: '',
             image: '',
             instructions: '',
+            inventory: [],
+            inventory_id: 0,
+            quantity: 0,
             open: false
         }
     }
 
+    componentDidMount() {
+        axios.get('/api/inventory')
+        .then(res => {
+            this.setState({
+                inventory: res.data
+            })
+        })
+    }
+
     handleChange = (e) => {
-        
+        console.log('hi')
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -29,10 +42,13 @@ class AddProject extends Component {
     }   
 
     addProject = () => {
+        const {name, image, instructions, inventory_id, quantity} = this.state
         this.props.addProject({
-            name: this.state.name,
-            image: this.state.image, 
-            instructions: this.state.instructions
+            name,
+            image,
+            instructions,
+            inventory_id,
+            quantity
         })
         this.resetInput();
         
@@ -42,22 +58,25 @@ class AddProject extends Component {
         this.setState({
             name: '',
             image: '',
-            instructions: ''
+            instructions: '',
+            quantity: 0
         })
     }
 
     render() {
-        let {name, image, instructions, open} = this.state
+        
+        let {name, image, instructions, open, inventory, quantity} = this.state
         return (
             <div className='main-add-art-button-container'>
                 <button className='main-add-art-button' onClick={this.openModal}>Add Project to Collection</button>
                 <Modal 
                     open={open} onClose={this.closeModal} center>
 
-                <Select projects={this.props.projects}/>
+                <Select inventory={inventory} quantity={quantity} handleChange={this.handleChange} inventory_id={this.state.inventory_id}/>
                 <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
                 <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
                 <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
+
                 <button onClick={this.addProject}>Add Project</button>
                 </Modal>
             </div>

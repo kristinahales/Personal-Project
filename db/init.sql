@@ -33,6 +33,14 @@ CREATE TABLE project_inventory(
 
 
 
+-- alter table project_inventory
+-- drop constraint project_inventory_project_id_fkey;
+
+-- ALTER TABLE project_inventory
+-- ADD constraint project_inventory_project_id_fkey
+-- FOREIGN KEY (project_id)
+-- REFERENCES projects(id)
+-- ON DELETE CASCADE;
 
 
 
