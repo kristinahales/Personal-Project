@@ -17,7 +17,7 @@ class Display extends React.Component {
     }
 
     closeModal() {
-        this.setState({open: false})
+        this.setState({open: false, selectedItem: null})
     }   
 
     renderProjects = () => {

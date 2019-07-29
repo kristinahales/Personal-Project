@@ -3,18 +3,18 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import './Inventory.css';
+import EditInventory from './EditInventory';
 
 class Inventory extends Component {
     constructor() {
         super() 
         this.state = {
             inventory: [],
-            updatedQty: ''
         }
-        this.update = this.update.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.updateQuantity = this.updateQuantity.bind(this);
     }
-
+    
     componentDidMount() {
         axios.get('/api/inventory')
         .then(res => {
@@ -24,54 +24,38 @@ class Inventory extends Component {
         })
     }
 
-    handleChange(e) {
-        let {name, value} = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    update(inventoryId) {
-        let {updatedQty} = this.state
-        axios.put(`/api/inventory/edit/${inventoryId}`, {updatedQty})
+    updateQuantity(inventoryId, updatedQty) {
+        console.log('function being hit')
+        return axios.put(`/api/inventory/edit/${inventoryId}`, {updatedQty})
         .then(res => {
-            console.log((res.data))
             this.setState({
                 inventory: res.data,
             })
+            console.log(res.data)
         })
-        this.resetInput();
-    }
-    
-    resetInput = () => {
-        this.setState({
-            updatedQty: ''
-        })
+        .catch(err => console.log(err, 'caught in error'))
     }
 
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        const {inventory, updatedQty} = this.state
+        const {inventory} = this.state
         return (
-            <div>Inventory
-                {
-                    inventory.map(item => {
-                        return (
-                            <div key={item.id}>
-                            <h1>{item.name}</h1>
-                            <img src={item.image} alt='Craft supply'/>
-                            <h1>{item.quantity}</h1>
-                            
-                            <input placeholder='enter inventory number' name='updatedQty' value={updatedQty} onChange={this.handleChange}/>
-                            <button onClick={() => this.update(item.id)}>Update</button>
-                            </div>
-                        )
-                    })
-                }
-                <br />
-                <Link to='/orders'>
-                <button>Need More Supplies</button>
-                </Link>
+
+            <div className='main-inventory-container'>
+                <div className='inventory-link-container'>
+                    <h1>Inventory</h1>
+                    <Link to='/orders'>
+                        <button>Need More Supplies</button>
+                    </Link>
+                    {
+                        inventory.map(inventory => {
+                            return (
+                                <EditInventory inventory={inventory} updateQuantity={this.updateQuantity}/>
+                            )
+                        })
+                    }
+
+                </div>
             </div>
         )
     }

@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 
 class Select extends Component {
-    constructor() {
-        super()
-    }
-
     render() {
         const {inventory, handleChange}= this.props
     return (

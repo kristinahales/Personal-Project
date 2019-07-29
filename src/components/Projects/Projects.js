@@ -12,6 +12,7 @@ class Projects extends React.Component {
         super()
         this.state = {
             projects: [],
+            
         }
 
         this.deleteProject = this.deleteProject.bind(this);
@@ -29,7 +30,8 @@ class Projects extends React.Component {
     }
 
     addProject(project) {
-        return axios.post('/api/addProject', project)
+        axios.post('/api/addProject', project)
+        
         .then(res => {
             this.setState({
                 projects: res.data
@@ -46,6 +48,7 @@ class Projects extends React.Component {
     }
 
     render() {
+        console.log(this.state.projects)
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
