@@ -32,17 +32,20 @@ class EditInventory extends Component {
         const {inventory} = this.props
         return (
             <div> 
-                <div className='edit-inventory-container'>
-                    <img src={inventory.image} />
-                    {editing ? 
-                    <input placeholder='enter inventory number' name='updatedQty' value={updatedQty} onChange={this.handleChange}/> :
-                    <p className='inventory-name'>{inventory.name}: {inventory.quantity}</p>
-                    }
+                <div className='each-inventory-item'>
+                    <img src={inventory.image} alt='Art supply'className='inventory-image'/>
 
-                    {editing ? 
-                    <button onClick={() => this.update(inventory.id)}>Save Changes</button> : 
-                    <i id='edit-button' onClick={this.flipEdit} className="far fa-edit"></i>
-                    }
+                    <div className='inventory-container'>  
+                        {editing ? 
+                        <input placeholder='enter inventory number' name='updatedQty' value={updatedQty} onChange={this.handleChange}/> :
+                        <p className='inventory-name'>{inventory.name}: {inventory.quantity}</p>
+                        }
+
+                        {editing ? 
+                        <button onClick={() => this.update(inventory.id)}>Save Changes</button> : 
+                        <i id='edit-button' onClick={this.flipEdit} className="far fa-edit"></i>
+                        }
+                    </div>  
                 </div>
 
             </div>

@@ -2,9 +2,15 @@
     padding: 10px;
     font-size: 15px;
     border-radius: 8px;
+    color: rgb(46,189,125, .8);
+    margin: 10px;
+    background: white;
+    box-shadow:  1.5px 1.5px 2.5px 3px #ccc;
+}
+
+.main-add-art-button:hover {
     background: rgb(46,189,125, .8);
     color: white;
-    margin: 10px;
 }
 
 .main-add-art-button-container {

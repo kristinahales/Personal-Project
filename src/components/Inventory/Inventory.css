@@ -1,57 +1,132 @@
-/* .main-inventory-container {
+.main-inventory-container {
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-
+    justify-content: space-around; 
+    align-items: center;
 }
 
-.inventory-link-container {
-    background: purple;
+.inventory-order-container {
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 90px;
+    justify-content: flex-end;
+
 }
 
-.each-inventory-container {
-    width: 150px;
-    height: 175px;
-    border: 1px solid rgb(175,61,63);
+.inventory-button:hover {
+    background-color: rgb(46,189,125, .8);
+    box-shadow: 0px 2px 3px #3F3F3F;
+    color: white;
+}
+
+.inventory-button {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-right: 10px;
+    color:  rgb(46,189,125, .8);
+    background: white; 
+    box-shadow:  1.5px 1.5px 2.5px 3px #ccc;
+    font-size: 15px;
+}
+
+.search-inventory-container {
+    display: flex;
+    width: 100vw;
+    height: 70px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#search {
+    color:  #3F3F3F;
+    font-size: 25px;
+}
+
+.filter-input {
+    border-radius: 6px;
+    font-size: 20px;
+    height: 30px;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.each-inventory-item {
+    width: 230px;
+    height: 250px;
+    box-shadow:  3px 3px 5px 6px #ccc;
     border-radius: 8px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 20px;
 }
 
-.inventory-name {
-    color: #3F3F3F;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-#edit-button {
-    color: rgb(175,61,63);
-    margin-top: 8px;
-    margin-right: 5px;
-}
-
-
-.edit-inventory-container {
-    /* background: yellow; */
-    /* width: 150px;
-    height: 40px;   
+.inventory-container {
     display: flex;
+    width: 200px;
+    height: 30px;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between
 }
+
+.inventory-name {
+    font-size: 22px;
+}
+.inventory-name, #edit-button {
+    color: #3F3F3F;
+} 
 
 .inventory-image {
-    height: 110px;
-    width: 90px;
-    padding: 10px;
-} */ 
+    height: 185px;
+    width: 135px;
+    padding: 5px;
+}
+
+@media (min-width: 700px) {
+    .filter-input {
+        width: 350px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .inventory-order-container {
+        height: 100px;
+    }
+    .inventory-button {
+        font-size: 25px;
+        margin-right: 30px;
+        padding: 15px;
+    }
+    #search {
+        font-size: 40px;
+    }
+    .filter-input {
+        width: 600px;
+        font-size: 30px;
+        height: 50px;
+    }
+    .each-inventory-item {
+        width: 400px;
+        height: 350px;
+    }
+    .inventory-container {
+        width: 350px;
+        height: 60px;
+    }
+    .inventory-name {
+        font-size: 40px;
+    }
+    #edit-button {
+        font-size: 30px;
+    }
+    .inventory-image {
+        height: 250px;
+        width: 170px;
+    }
+}

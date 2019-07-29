@@ -6,11 +6,13 @@ import {Redirect} from 'react-router-dom';
 import './Inventory.css';
 import EditInventory from './EditInventory';
 
+
 class Inventory extends Component {
     constructor() {
         super() 
         this.state = {
             inventory: [],
+            filterString: ''
         }
         this.updateQuantity = this.updateQuantity.bind(this);
     }
@@ -24,38 +26,50 @@ class Inventory extends Component {
         })
     }
 
+    handleChange = (filter) => {
+        this.setState({
+            filterString: filter
+        })
+    }
+
+
     updateQuantity(inventoryId, updatedQty) {
-        console.log('function being hit')
         return axios.put(`/api/inventory/edit/${inventoryId}`, {updatedQty})
         .then(res => {
             this.setState({
                 inventory: res.data,
             })
-            console.log(res.data)
         })
         .catch(err => console.log(err, 'caught in error'))
     }
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        const {inventory} = this.state
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        const {inventory, filterString} = this.state
         return (
-
             <div className='main-inventory-container'>
-                <div className='inventory-link-container'>
-                    <h1>Inventory</h1>
-                    <Link to='/orders'>
-                        <button>Need More Supplies</button>
-                    </Link>
+                    <div className='inventory-order-container'>
+                        <Link to='/orders'>
+                                <button className='inventory-button'>Need More Supplies</button>
+                        </Link>
+                    </div>
+                    
+                    <div className='search-inventory-container'>
+                        <i id='search' className="fas fa-search"> <input className='filter-input' placeholder='Search' onChange={e => this.handleChange(e.target.value)}/></i>       
+                    </div>
+                
                     {
-                        inventory.map(inventory => {
+                        inventory.filter(item => {
+                            return item.name.includes(filterString)
+                        })
+                        .map(inventory => {
                             return (
+                                <div key={inventory.id}>
                                 <EditInventory inventory={inventory} updateQuantity={this.updateQuantity}/>
+                                </div>
                             )
                         })
                     }
-
-                </div>
             </div>
         )
     }

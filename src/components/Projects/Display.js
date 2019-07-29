@@ -23,7 +23,7 @@ class Display extends React.Component {
     renderProjects = () => {
         return this.props.projects.map((project, i) => {
             return (
-                <div className='project-main-container'>
+                <div className='project-main-container' key={project.id}>
                 <i id='x' className="far fa-times-circle" onClick={() => this.props.deleteProject(project.id)}></i>
                 <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
                 </div>

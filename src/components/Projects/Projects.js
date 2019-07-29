@@ -31,7 +31,6 @@ class Projects extends React.Component {
 
     addProject(project) {
         axios.post('/api/addProject', project)
-        
         .then(res => {
             this.setState({
                 projects: res.data
@@ -48,7 +47,6 @@ class Projects extends React.Component {
     }
 
     render() {
-        console.log(this.state.projects)
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>

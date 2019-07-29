@@ -62,6 +62,8 @@ class AddProject extends Component {
         })
     }
 
+
+
     render() {
         
         let {name, image, instructions, open, inventory, quantity} = this.state

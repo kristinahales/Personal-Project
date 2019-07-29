@@ -15,6 +15,7 @@ class Select extends Component {
             }
             </select>
                 <input name='quantity' onChange={handleChange}/> 
+                <button>Add</button>
         </div>
         )
     }
