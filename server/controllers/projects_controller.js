@@ -21,9 +21,7 @@ module.exports = {
         res.status(200).send(projects);
     },
     async addArtProject(req, res) {
-        console.log(req.body)
-        console.log(req.session.user.id)
-        let {name, image, instructions, inventory_id, quantity} = req.body;
+        let {name, image, instructions, projectItems} = req.body;
         let {id} = req.session.user;
         const db = req.app.get('db');
         let project = await db.add_art_project([
@@ -31,11 +29,33 @@ module.exports = {
             image, 
             instructions,
             id
-        ]) 
-        let allProjects = await db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
-        res.status(200).send(allProjects);
-    },
+        ])
+        
+            projectItems.forEach((obj) => {
+            let {inventory_id, quantity} = obj
+            db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
+        }) 
 
+        let allProjects = await db.get_art_projects(id)
+        let currentProjectLength = await db.project_inventory_length(project[0].id)
+        console.log('firstallProjects.length', allProjects.length, projectItems.length)
+        var count = 0
+        async function lengthChecker() {
+            console.log('hit lengthChecker', currentProjectLength[0].count)
+
+            if(+currentProjectLength[0].count !== projectItems.length && count < 10) {
+                currentProjectLength = await db.project_inventory_length(project[0].id)
+                count++
+                console.log(count)
+                setTimeout(() => lengthChecker(), 500)
+            } else if (+currentProjectLength[0].count === projectItems.length) {
+                return console.log(allProjects = await db.get_art_projects(id));
+            } else {
+                console.log('error')
+            }
+    }
+        lengthChecker();   
+    },
     async filteredProjects(req, res) {
         let {id} = req.session.user;
         const db = req.app.get('db');

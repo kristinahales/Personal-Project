@@ -26,8 +26,8 @@ class Projects extends React.Component {
         .catch(err => console.log(err))
     }
 
-    addProject(project) {
-        axios.post('/api/addProject', project)
+    addProject(projectItems) {
+        axios.post('/api/addProject', projectItems)
         .then(res => {
             this.setState({
                 projects: res.data

@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import axios from 'axios';
 
 class Display extends React.Component {
     constructor(props) {
@@ -26,7 +25,6 @@ class Display extends React.Component {
         return this.props.projects.map((project, i) => {
             return (
                 <div className='project-main-container' key={project.id}>
-                
                 <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
                 </div>
             );
@@ -56,7 +54,10 @@ class Display extends React.Component {
                         <i className="fas fa-heart" onClick={() => this.props.deleteFavorite(project.id)} style={{cursor: 'pointer', color: 'red'}}></i>
                     }
                     
-                    <button className='delete-art-project-button' onClick={() => this.props.deleteProject(project.id)}>Delete Project</button>
+                    {!project.is_public ? <button className='delete-art-project-button' onClick={() => this.props.deleteProject(project.id)}>Delete Project</button>
+                    : <div></div>
+                    }
+                    
                 </div>
             );
         }

@@ -1,5 +1,6 @@
 DELETE FROM projects
-WHERE id = $1;
+WHERE id = $1
+and user_id = $2;
 
 select p.*,
 (select json_agg(i)

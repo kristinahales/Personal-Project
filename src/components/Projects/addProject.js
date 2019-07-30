@@ -12,8 +12,7 @@ class AddProject extends Component {
             image: '',
             instructions: '',
             inventory: [],
-            inventory_id: 0,
-            quantity: 0,
+            projectItems: [],
             open: false
         }
     }
@@ -42,43 +41,43 @@ class AddProject extends Component {
     }   
 
     addProject = () => {
-        const {name, image, instructions, inventory_id, quantity} = this.state
+        const {name, image, instructions, projectItems} = this.state
         this.props.addProject({
             name,
             image,
             instructions,
-            inventory_id,
-            quantity
+            projectItems
         })
         this.resetInput();
         
     }
-    
+
     resetInput() {
         this.setState({
             name: '',
             image: '',
             instructions: '',
-            quantity: 0
         })
     }
 
-
+    handleAddProjectItem = (newItem) => {
+        this.state.projectItems.push(newItem)
+    }
 
     render() {
         
-        let {name, image, instructions, open, inventory, quantity} = this.state
+        let {name, image, instructions, open, inventory} = this.state
         return (
             <div className='main-add-art-button-container'>
                 <button className='main-add-art-button' onClick={this.openModal}>Add Project to Collection</button>
                 <Modal 
                     open={open} onClose={this.closeModal} center>
 
-                <Select inventory={inventory} quantity={quantity} handleChange={this.handleChange} inventory_id={this.state.inventory_id}/>
+                <Select handleAddProjectItem={this.handleAddProjectItem} inventory={inventory} />
                 <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
                 <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
                 <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
-                <Link to='/create'>Begin Creating</Link>
+                {/* <Link to='/create'>Begin Creating</Link> */}
                 <button onClick={this.addProject}>Add Project</button>
                 </Modal>
             </div>
