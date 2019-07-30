@@ -57,7 +57,6 @@ class Projects extends React.Component {
     }
 
     addToFavorites = (projectId) => {
-        console.log(projectId)
         axios.post(`/api/addFavorite/${projectId}`)
         .then(() => {
             const projects = [...this.state.projects];

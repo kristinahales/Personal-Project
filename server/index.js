@@ -6,7 +6,7 @@ const uc = require('./controllers/user_controller');
 const pc = require('./controllers/projects_controller');
 const ic = require('./controllers/inventory_controller');
 const nodemailer = require('nodemailer');
-
+const fc = require('./controllers/favorites_controller');
 const authmw = require('./middleware/authCheck');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
@@ -86,9 +86,9 @@ app.post('/api/addProject', pc.addArtProject);
 app.get('/api/filtered/projects', pc.filteredProjects);
 
 //favorite endpoints
-app.post('/api/addFavorite/:projectId', pc.addFavorite);
-app.get('/api/favoriteProjects', pc.getFavoriteProjects);
-app.delete('/api/deleteFavorite/:projectId', pc.deleteFavorite);
+app.post('/api/addFavorite/:projectId', fc.addFavorite);
+app.get('/api/favoriteProjects', fc.getFavoriteProjects);
+app.delete('/api/deleteFavorite/:projectId', fc.deleteFavorite);
 
 
 //inventory endpoints 

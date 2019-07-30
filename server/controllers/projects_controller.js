@@ -1,20 +1,18 @@
-async function getAllProjects(req, res) {
-    let {id} = req.session.user;
-    const db = req.app.get('db');
-    let projects = await db.get_art_projects(id);
-    const favorites = await db.get_favorite_projects(id);
-    const updatedProjectList = projects.map(val => {
-        const isFavorite = favorites.some(item => item.project_id === val.id);
-        return {
-            ...val,
-            isFavorite
-        }
-    });
-    res.status(200).send(updatedProjectList);
-}
-
 module.exports = {
-    getAllProjects,
+    async getAllProjects(req, res) {
+        let {id} = req.session.user;
+        const db = req.app.get('db');
+        let projects = await db.get_art_projects(id);
+        const favorites = await db.get_favorite_projects(id);
+        const updatedProjectList = projects.map(val => {
+            const isFavorite = favorites.some(item => item.project_id === val.id);
+            return {
+                ...val,
+                isFavorite
+            }
+        });
+        res.status(200).send(updatedProjectList);
+    },
     async deleteProject(req, res) {
         let {projectId} = req.params
         let {id} = req.session.user;
@@ -48,30 +46,6 @@ module.exports = {
         });
         res.status(200).send(filter)
     },
-
-    async addFavorite(req, res) {
-        let {id} = req.session.user;
-        let {projectId} = req.params;
-        const db = req.app.get('db');
-        await db.add_to_favorites([id, +projectId])
-        // getAllProjects(req, res)
-        res.sendStatus(200);
-    },
-    async getFavoriteProjects(req, res) {
-        let {id} = req.session.user;
-        const db = req.app.get('db');
-        let favoriteProjects = await db.get_favorite_projects(id);
-        res.status(200).send(favoriteProjects);
-    },
-    async deleteFavorite(req, res) {
-        let {id} = req.session.user;
-        let {projectId} = req.params;
-        const db = req.app.get('db');
-        await db.delete_favorite_project([id, projectId]);
-        res.sendStatus(200);
-        // getAllProjects(req, res);
-    }
-
 }
 
 function hasEnoughInventory(projectInventory, userInventory) {
