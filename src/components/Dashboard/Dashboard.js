@@ -2,8 +2,26 @@ import React, {Component} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import './Dashboard.css';
 import {connect} from 'react-redux';
+import axios from 'axios';
+
 
 class Dashboard extends Component {
+    constructor() {
+        super()
+        this.state = {
+            favoriteProjects: []
+        }
+    }
+    
+    componentDidMount() {
+        axios.get('/api/favoriteProjects')
+        .then(res => {
+            this.setState({
+                favoriteProjects: res.data
+            })
+        })
+    }
+   
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         
@@ -14,6 +32,16 @@ class Dashboard extends Component {
                     <div><Link to='/projects'><button className='dashboard-button'>View Art Projects</button></Link></div>
                     <div><Link to='/create'><button className='dashboard-button'>Begin Creating</button></Link></div>
                 </div>
+
+                {
+                    this.state.favoriteProjects.map(project => {
+                        return (
+                            <div>
+                                {project.name}
+                            </div>
+                        )
+                    })
+                }
             </div>
         )
     }

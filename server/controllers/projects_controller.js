@@ -1,16 +1,26 @@
+async function getAllProjects(req, res) {
+    let {id} = req.session.user;
+    const db = req.app.get('db');
+    let projects = await db.get_art_projects(id);
+    const favorites = await db.get_favorite_projects(id);
+    const updatedProjectList = projects.map(val => {
+        const isFavorite = favorites.some(item => item.project_id === val.id);
+        return {
+            ...val,
+            isFavorite
+        }
+    });
+    res.status(200).send(updatedProjectList);
+}
+
 module.exports = {
-    async getAllProjects(req, res) {
-        let {id} = req.session.user;
-        const db = req.app.get('db');
-        let projects = await db.get_art_projects(id);
-        res.send(projects);
-    },
+    getAllProjects,
     async deleteProject(req, res) {
         let {projectId} = req.params
         let {id} = req.session.user;
         const db = req.app.get('db');
         let projects = await db.delete_art_project([+projectId, id])
-        res.send(projects);
+        res.status(200).send(projects);
     },
     async addArtProject(req, res) {
         console.log(req.body)
@@ -25,7 +35,7 @@ module.exports = {
             id
         ]) 
         let allProjects = await db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
-        res.send(allProjects);
+        res.status(200).send(allProjects);
     },
 
     async filteredProjects(req, res) {
@@ -36,8 +46,32 @@ module.exports = {
         const filter = allProjects.filter(project => {
             return !project.inventory || hasEnoughInventory(project.inventory, userInventory);
         });
-        res.send(filter)
+        res.status(200).send(filter)
+    },
+
+    async addFavorite(req, res) {
+        let {id} = req.session.user;
+        let {projectId} = req.params;
+        const db = req.app.get('db');
+        await db.add_to_favorites([id, +projectId])
+        // getAllProjects(req, res)
+        res.sendStatus(200);
+    },
+    async getFavoriteProjects(req, res) {
+        let {id} = req.session.user;
+        const db = req.app.get('db');
+        let favoriteProjects = await db.get_favorite_projects(id);
+        res.status(200).send(favoriteProjects);
+    },
+    async deleteFavorite(req, res) {
+        let {id} = req.session.user;
+        let {projectId} = req.params;
+        const db = req.app.get('db');
+        await db.delete_favorite_project([id, projectId]);
+        res.sendStatus(200);
+        // getAllProjects(req, res);
     }
+
 }
 
 function hasEnoughInventory(projectInventory, userInventory) {

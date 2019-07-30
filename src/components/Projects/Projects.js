@@ -1,5 +1,4 @@
 import React from 'react';
-import './Projects.css'
 import axios from 'axios';
 import AddProject from './AddProject';
 import {connect} from 'react-redux';
@@ -12,9 +11,7 @@ class Projects extends React.Component {
         super()
         this.state = {
             projects: [],
-            
         }
-
         this.deleteProject = this.deleteProject.bind(this);
         this.addProject = this.addProject.bind(this);
     }
@@ -46,12 +43,38 @@ class Projects extends React.Component {
         })
     }
 
+    
+    deleteFavorite = (projectId) => {
+        axios.delete(`/api/deleteFavorite/${projectId}`)
+        .then(() => {
+            const projects = [...this.state.projects];
+            const project = projects.find(val => val.id === projectId);
+            project.isFavorite = false;
+            this.setState({
+                projects
+            })
+        })
+    }
+
+    addToFavorites = (projectId) => {
+        console.log(projectId)
+        axios.post(`/api/addFavorite/${projectId}`)
+        .then(() => {
+            const projects = [...this.state.projects];
+            const project = projects.find(val => val.id === projectId);
+            project.isFavorite = true;
+            this.setState({
+                projects
+            })
+        })
+    }
+
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
-                <Display projects={this.state.projects} deleteProject={this.deleteProject}/>
+                <Display projects={this.state.projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
             </div>
         )
     }

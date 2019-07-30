@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Modal from 'react-responsive-modal';
 import Select from './Select';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class AddProject extends Component {
     constructor() {
@@ -77,7 +78,7 @@ class AddProject extends Component {
                 <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
                 <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
                 <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
-
+                <Link to='/create'>Begin Creating</Link>
                 <button onClick={this.addProject}>Add Project</button>
                 </Modal>
             </div>

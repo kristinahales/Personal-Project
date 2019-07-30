@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
+import axios from 'axios';
 
 class Display extends React.Component {
     constructor(props) {
@@ -17,14 +18,15 @@ class Display extends React.Component {
     }
 
     closeModal() {
-        this.setState({open: false, selectedItem: null})
-    }   
+        this.setState({open: false})
+    }       
+
 
     renderProjects = () => {
         return this.props.projects.map((project, i) => {
             return (
                 <div className='project-main-container' key={project.id}>
-                <i id='x' className="far fa-times-circle" onClick={() => this.props.deleteProject(project.id)}></i>
+                
                 <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
                 </div>
             );
@@ -37,20 +39,24 @@ class Display extends React.Component {
             const project = this.props.projects[this.state.selectedItem];
             return (
                 <div>
-                    <h2 className='modal-text'>{project.name}</h2>
+                    <h2 className='modal-title'>{project.name}</h2>
                     <p className='modal-text'>Instructions: {project.instructions}</p>
                     <p className='modal-text'>Supplies:</p>
                     {
                         project.inventory.map(item => {
                             return (
-                                <div key={item.id}>
-                                    <ul>
-                                        <li className='modal-text'>{item.name}: {item.quantity}</li>
-                                    </ul>
+                                <div key={item.id}><ul><li className='modal-text'>{item.name}: {item.quantity}</li></ul>
                                 </div>
                             )
                         })
                     }
+            
+                    {
+                        !project.isFavorite ? <i className="fas fa-heart" onClick={() => this.props.addToFavorites(project.id)} style={{cursor: 'pointer', color: 'black'}}></i> :
+                        <i className="fas fa-heart" onClick={() => this.props.deleteFavorite(project.id)} style={{cursor: 'pointer', color: 'red'}}></i>
+                    }
+                    
+                    <button className='delete-art-project-button' onClick={() => this.props.deleteProject(project.id)}>Delete Project</button>
                 </div>
             );
         }

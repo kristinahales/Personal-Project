@@ -85,6 +85,12 @@ app.delete('/api/delete/project/:projectId', pc.deleteProject);
 app.post('/api/addProject', pc.addArtProject);
 app.get('/api/filtered/projects', pc.filteredProjects);
 
+//favorite endpoints
+app.post('/api/addFavorite/:projectId', pc.addFavorite);
+app.get('/api/favoriteProjects', pc.getFavoriteProjects);
+app.delete('/api/deleteFavorite/:projectId', pc.deleteFavorite);
+
+
 //inventory endpoints 
 app.get('/api/inventory', ic.getAllInventory);
 app.put('/api/inventory/edit/:inventoryId', ic.editQuantity);

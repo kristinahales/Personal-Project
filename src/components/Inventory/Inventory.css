@@ -94,7 +94,14 @@
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 800px) {
+    .inventory-button {
+        font-size: 20px;
+        padding: 15px;
+    }
+}
+
+@media (min-width: 1400px) {
     .inventory-order-container {
         height: 100px;
     }
