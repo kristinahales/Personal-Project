@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Sigmar+One&display=swap');
+
 .main-dashboard-container{
-    background:  rgb(2,176,215, .9);
+    opacity: .9;
     width: 100vw;
     height: 300px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .first-dashboard-image {
     background-image: url('./../Images/ChildPainting.jpg');
     background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
     height: 250px;
     width: 280px;
     margin-top: 20px;
@@ -17,22 +20,56 @@
 .second-dashboard-image {
     background-image: url('./../Images/Teacher.jpeg');
     background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
 }
 
 .third-dashboard-image {
     background-image: url('./../Images/ChildCutting.jpeg');
     background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
 }
 
 .fourth-dashboard-image {
-    background-image: url('./../Images/GirlsPainting.jpeg');
+    background-image: url('./../Images/GirlAtEasel.jpeg');
     background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
 }
 
 .fifth-dashboard-image {
     background-image: url('./../Images/ChildrenPainting.jpg');
     background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
 }
+
+.sixth-dashboard-image {
+    background-image: url('./../Images/TeacherWithKids.jpeg');
+    background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
+}
+
+.seventh-dashboard-image {
+    background: url('./../Images/GirlTracing.jpeg');
+    background-size: cover;
+    box-shadow:  3px 3px 5px 6px #ccc;
+}
+
+.first-dashboard-info, .second-dashboard-info, .third-dashboard-info, .fourth-dashboard-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow:  3px 3px 5px 6px #ccc;
+    background: rgb(2,176,215);
+    color: white;
+    font-family: 'Sigmar One', cursive;
+}
+
+
+.third-dashboard-info, .second-dashboard-info {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
 
 @media (max-width: 600px) {
     .first-small-dashboard-container {
@@ -50,7 +87,7 @@
         width: 330px;
     }
     .first-small-dashboard-container {
-        background: green;
+        /* background: green; */
         height: 300px;
         width: 250px;
         margin-top: 20px;
@@ -63,7 +100,6 @@
         width: 250px;
     }
     .first-dashboard-info {
-        background: yellow;
         height: 80px;
         width: 250px;
     }
@@ -80,7 +116,7 @@
         width: 420px;
     }
     .first-small-dashboard-container {
-        background: green;
+        /* background: green; */
         height: 370px;
         width: 290px;
         margin-top: 20px;
@@ -89,11 +125,10 @@
         justify-content: space-between;
     }
     .second-dashboard-image {
-        height: 230px;
+        height: 240px;
         width: 290px;
     }
     .first-dashboard-info {
-        background: yellow;
         height: 100px;
         width: 290px;
     }
@@ -129,7 +164,7 @@
         width: 460px;
     }
     .first-small-dashboard-container {
-        background: green;
+        /* background: green; */
         height: 450px;
         width: 350px;
         margin-top: 20px;
@@ -138,13 +173,13 @@
         justify-content: space-between;
     }
     .second-dashboard-image {
-        height: 270px;
+        height: 280px;
         width: 350px;
     }
     .first-dashboard-info {
-        background: yellow;
         height: 140px;
         width: 350px;
+        font-size: 40px;
     }
     .third-dashboard-image {
         margin-top: 20px;
@@ -153,13 +188,13 @@
     }
     .second-dashboard-container {
         display: flex;
-        justify-content: space-around;
-        background: green;
+        justify-content: space-evenly;
+        opacity: .9;
         height: 400px;
         width: 100vw;
     }
-    .second-dashboard-info {
-        background: yellow;
+    .second-dashboard-info, .third-dashboard-info {
+        font-size: 40px;
         width: 190px;
         margin-bottom: 20px;
     }
@@ -168,13 +203,8 @@
         margin-bottom: 20px;
     }
     .fifth-dashboard-image {
-        width: 470px;
+        width: 490px;
         height: 380px;
-        margin-bottom: 20px;
-    }
-    .third-dashboard-info {
-        background: yellow;
-        width: 190px;
         margin-bottom: 20px;
     }
 }
@@ -198,30 +228,59 @@
     .second-small-dashboard-container {
         display: none;
     }
+    .seventh-dashboard-image {
+        display: none;
+    }
 }
 
 @media (min-width: 1700px) {
     .second-small-dashboard-container {
-        background: green;
+        /* background: green; */
         height: 450px;
         width: 350px;
         margin-top: 20px;
+        border-radius: 8px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
+    .second-dashboard-info, .third-dashboard-info {
+        width: 200px;
+        margin-bottom: 20px;
+    }
     .fourth-dashboard-info {
-        background: yellow;
-        height: 140px;
+        height: 150px;
         width: 350px;
     }
+    .first-dashboard-info, .second-dashboard-info, .third-dashboard-info, .fourth-dashboard-info {
+        font-size: 60px;
+    }
     .sixth-dashboard-image {
-        background: red;
         height: 270px;
         width: 350px;
     }
-
-
+    .seventh-dashboard-image {
+        width: 320px;
+        margin-bottom: 20px;
+    }
 }
 
+@media (min-width: 1800px) {
+    .first-dashboard-image {
+        width: 550px;
+    }
+    .second-dashboard-info, .third-dashboard-info {
+        width: 230px;
+        margin-bottom: 20px;
+    }
+    .fourth-dashboard-image {
+        width: 330px;
+    }
+    .fifth-dashboard-image {
+        width: 550px;
+    }
+    .seventh-dashboard-image {
+        width: 330px;
+    }
+}
 

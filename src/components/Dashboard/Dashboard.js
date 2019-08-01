@@ -14,33 +14,32 @@ class Dashboard extends Component {
                     
                     <div className='first-small-dashboard-container'>
                         <div className='second-dashboard-image'></div>
-                        <div className='first-dashboard-info'></div>
+                        <div className='first-dashboard-info'>Discover</div>
                     </div>
 
                     <div className='third-dashboard-image'></div>
 
                     <div className='second-small-dashboard-container'>
-                        <div className='fourth-dashboard-info'></div>
+                        <div className='fourth-dashboard-info'>Create</div>
                         <div className='sixth-dashboard-image'></div>
                     </div>
                 
                 </div>
 
                 <div className='second-dashboard-container'>
-                    <div className='second-dashboard-info'>Info</div>
+                    <div className='second-dashboard-info'>Imagine</div>
                 
                     <div className='fourth-dashboard-image'></div>
 
                     <div className='fifth-dashboard-image'></div>
-                    <div className='third-dashboard-info'>Info</div>
+
+                    <div className='seventh-dashboard-image'></div>
+
+                    <div className='third-dashboard-info'>Explore</div>
                 </div>
-               
+             
 
-
-
-                {/* <div className='dashboard-text-container'>
-                    <p className='dashboard-text'>EVERY child is an artist.</p>
-                </div> */}
+<div className='dashboard-links'>Links</div>
 
                 {/* <div className='dashboard-image-main-container'>
                     <div className='dashboard-image-and-links-container'>
