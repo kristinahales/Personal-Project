@@ -5,7 +5,6 @@ import Login from './components/Login/Login';
 import Projects from './components/Projects/Projects';
 import Orders from './components/Orders/Orders';
 import Inventory from './components/Inventory/Inventory';
-import Create from './components/Create/Create';
 
 export default (
     <Switch>
@@ -13,7 +12,6 @@ export default (
         <Route path="/login" component={Login}/>
         <Route path='/orders' component={Orders}/>
         <Route path='/inventory' component={Inventory}/>
-        <Route path='/projects' component={Projects}/>
-        <Route path='/create' component={Create}/>  
+        <Route path='/projects' component={Projects}/> 
     </Switch>
 );

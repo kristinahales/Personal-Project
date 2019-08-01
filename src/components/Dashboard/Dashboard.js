@@ -10,44 +10,20 @@ class Dashboard extends Component {
         return (
             <div>
                 <div className='main-dashboard-container'>
-                    <div className='first-dashboard-image'></div> 
+                    <div className='collage'></div>
+                </div>
                     
-                    <div className='first-small-dashboard-container'>
-                        <div className='second-dashboard-image'></div>
-                        <div className='first-dashboard-info'>Discover</div>
-                    </div>
-
-                    <div className='third-dashboard-image'></div>
-
-                    <div className='second-small-dashboard-container'>
-                        <div className='fourth-dashboard-info'>Create</div>
-                        <div className='sixth-dashboard-image'></div>
-                    </div>
-                
+                <div className='main-dashboard-quote-container'>
+                    <div className='dashboard-quote-container'><p className='dashboard-quote'>"Almost all creativity involves purposeful play.” – Abraham Maslow</p></div>
                 </div>
-
-                <div className='second-dashboard-container'>
-                    <div className='second-dashboard-info'>Imagine</div>
                 
-                    <div className='fourth-dashboard-image'></div>
-
-                    <div className='fifth-dashboard-image'></div>
-
-                    <div className='seventh-dashboard-image'></div>
-
-                    <div className='third-dashboard-info'>Explore</div>
-                </div>
-             
-
-<div className='dashboard-links'>Links</div>
-
-                {/* <div className='dashboard-image-main-container'>
+                <div className='dashboard-image-main-container'>
                     <div className='dashboard-image-and-links-container'>
                         <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/CraftRainbow.JPG'/>
                         <div className='dashboard-links-container'><Link to='/projects' className='dashboard-link'>Projects</Link></div>
-                    </div> */}
+                    </div>
 
-                    {/* <div className='dashboard-image-and-links-container' >
+                    <div className='dashboard-image-and-links-container' >
                         <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/childpainthands.JPG'/>
                         <div className='dashboard-links-container'><Link to='/create'className='dashboard-link'>Create</Link></div>
                     </div>
@@ -57,7 +33,7 @@ class Dashboard extends Component {
                         <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/crayons2.JPG'/>
                         <div className='dashboard-links-container' id='inventory-link'><Link to='/inventory' className='dashboard-link'>Inventory</Link></div>
                     </div>
-                </div> */}
+                </div>
 
             </div>
         )
