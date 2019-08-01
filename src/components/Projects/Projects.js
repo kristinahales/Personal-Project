@@ -77,6 +77,16 @@ class Projects extends React.Component {
         })
     }
 
+    filteredProjects = () => {
+        axios.get(`/api/filtered/projects`)
+        .then(res => {
+            this.setState({
+                projects: res.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
 
 
     render() {
@@ -86,6 +96,7 @@ class Projects extends React.Component {
 
         return (
             <div>
+                <button onClick={this.filteredProjects}>Filtered</button>
                 <button onClick={this.flipShowFavorites}>{this.state.showFavorites ? 'Show Projects' : 'Faves'}</button>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
                 <Display projects={projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
