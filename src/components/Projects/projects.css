@@ -14,13 +14,11 @@
 }
 
 .main-add-art-button-container {
-    background: rgb(249,246,247);
     display: flex;
     justify-content: flex-end;
 }
 
 .show-projects-container {
-    background: rgb(249,246,247);
     height: 100%;
     width: 100%;
     display: flex;
@@ -32,18 +30,24 @@
     display: flex;
     flex: 0 1 180px;
     align-items: center;
-    box-shadow:  3px 3px 5px 6px #ccc;
     width: 275px;
     height: 275px;
-    margin: 10px;
+    margin: 15px;
     border-radius: 8px;
 }
 
+.projects-buttons {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .delete-art-project-button {
-    font-size: 15px;
+    font-size: 13px;
     background: rgb(2,176,215, .9);
     color: white;
-    padding: 10px;
+    padding: 5px;
+    width: 100px;
     border-radius: 8px;
 }
 
@@ -51,6 +55,7 @@
     height: 250px;
     width: 160px;
     border-radius: 20px;
+    box-shadow:  3px 3px 5px 6px #ccc;
     padding: 10px;
 }
 
@@ -60,7 +65,7 @@
 }
 
 
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
     .modal-text {
         font-size: 25px;
     }
@@ -81,16 +86,17 @@
         height: 365px;
         width: 245px;
     }
-    #delete-art-project-button {
-        font-size: 30px;
+    .delete-art-project-button {
+        width: 200px;
+        font-size: 20px;
+        padding: 10px;
+    }
+    #favorite-button {
+        font-size: 35px;
+    }
+    .projects-buttons {
+        width: 500px;
     }
 }
 
-@media (min-width: 1600px) {
-    .modal-title {
-        font-size: 40px;
-    }
-    .modal-text {
-        font-size: 30px;
-    }
-}
+

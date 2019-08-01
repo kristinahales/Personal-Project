@@ -6,42 +6,40 @@ import axios from 'axios';
 
 
 class Dashboard extends Component {
-    constructor() {
-        super()
-        this.state = {
-            favoriteProjects: []
-        }
-    }
-    
-    componentDidMount() {
-        axios.get('/api/favoriteProjects')
-        .then(res => {
-            this.setState({
-                favoriteProjects: res.data
-            })
-        })
-    }
-   
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
-            <div className='dashboard-container'>
-                <div className='dashboard-button-container'>
-                    <div><Link to='/inventory'><button className='dashboard-button'>Update Inventory</button></Link></div>
-                    <div><Link to='/projects'><button className='dashboard-button'>View Art Projects</button></Link></div>
-                    <div><Link to='/create'><button className='dashboard-button'>Begin Creating</button></Link></div>
+            <div>
+                <div className='h'></div>
+                <div className='dashboard-blue-background'></div>
+                <div className='main-dashboard-image'></div>
+
+                <div className='hi'>Hi there</div>
+
+
+
+                <div className='dashboard-text-container'>
+                    <p className='dashboard-text'>EVERY child is an artist.</p>
                 </div>
 
-                {
-                    this.state.favoriteProjects.map(project => {
-                        return (
-                            <div>
-                                {project.name}
-                            </div>
-                        )
-                    })
-                }
+                <div className='dashboard-image-main-container'>
+                    <div className='dashboard-image-and-links-container'>
+                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/CraftRainbow.JPG'/>
+                        <div className='dashboard-links-container'><Link to='/projects' className='dashboard-link'>Projects</Link></div>
+                    </div>
+
+                    <div className='dashboard-image-and-links-container' >
+                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/childpainthands.JPG'/>
+                        <div className='dashboard-links-container'><Link to='/create'className='dashboard-link'>Create</Link></div>
+                    </div>
+
+                    
+                    <div className='dashboard-image-and-links-container'>
+                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/crayons2.JPG'/>
+                        <div className='dashboard-links-container' id='inventory-link'><Link to='/inventory' className='dashboard-link'>Inventory</Link></div>
+                    </div>
+                </div>
+
             </div>
         )
     }

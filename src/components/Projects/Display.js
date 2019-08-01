@@ -30,7 +30,8 @@ class Display extends React.Component {
             );
         });
     }
-
+    
+    
 
     renderModal = () => {
         if(this.state.selectedItem !== null) {
@@ -48,16 +49,17 @@ class Display extends React.Component {
                             )
                         })
                     }
-            
+                    <div className='projects-buttons'>
                     {
-                        !project.isFavorite ? <i className="fas fa-heart" onClick={() => this.props.addToFavorites(project.id)} style={{cursor: 'pointer', color: 'black'}}></i> :
-                        <i className="fas fa-heart" onClick={() => this.props.deleteFavorite(project.id)} style={{cursor: 'pointer', color: 'red'}}></i>
+                        !project.isFavorite ? <i id='favorite-button' className="fas fa-heart" onClick={() => this.props.addToFavorites(project.id)} style={{cursor: 'pointer', color: 'black'}}></i> :
+                        <i className="fas fa-heart" id='favorite-button' onClick={() => this.props.deleteFavorite(project.id)} style={{cursor: 'pointer', color: 'red'}}></i>
                     }
                     
                     {!project.is_public ? <button className='delete-art-project-button' onClick={() => this.props.deleteProject(project.id)}>Delete Project</button>
-                    : <div></div>
+                    : null
                     }
-                    
+                    </div>
+
                 </div>
             );
         }

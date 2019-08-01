@@ -44,7 +44,7 @@ class Inventory extends Component {
     }
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         const {inventory, filterString} = this.state
         return (
             <div className='main-inventory-container'>

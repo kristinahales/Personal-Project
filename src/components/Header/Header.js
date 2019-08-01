@@ -38,7 +38,7 @@ class Header extends React.Component {
         return (
             <header className='header-container'>
                 <i onClick={menuOpen ? this.closeMenu : this.openMenu} id='hamburger' className="fas fa-bars"></i>
-                <h2 className='header-text'>Discover</h2>
+                {/* <h2 className='header-text'>Discover</h2> */}
                 
                 <CheeseburgerMenu isOpen={menuOpen} closeCallback={this.closeMenu}>
                     <div>
@@ -50,13 +50,6 @@ class Header extends React.Component {
                         <div className='hamburger-links'><Link to="/login" onClick={this.logout}>Logout</Link></div>
                     </div>
                 </CheeseburgerMenu>
-                                
-                <nav className='nav-container'>
-                    <Link to='/' className='nav-links'>Home</Link>
-                    <Link to='/orders' className='nav-links'>Orders</Link>
-                    <Link to='/login' onClick={this.logout} className='nav-links'>Logout</Link>
-                </nav>
-
             </header>
         )
     }

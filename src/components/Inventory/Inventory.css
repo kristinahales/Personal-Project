@@ -88,6 +88,21 @@
     padding: 5px;
 }
 
+.inventory-amount-input {
+    width: 70px;
+    padding: 3px;
+    text-align: center;
+}
+
+.inventory-amount-button {
+    font-size: 12px;
+    padding: 5px;
+    background: rgb(46,189,125, .8);
+    color: white;
+    border-radius: 8px;
+
+}
+
 @media (min-width: 700px) {
     .filter-input {
         width: 350px;
@@ -135,5 +150,15 @@
     .inventory-image {
         height: 250px;
         width: 170px;
+    }
+    .inventory-amount-input {
+        width: 140px;
+        padding: 5px;
+        text-align: center;
+    }
+    
+    .inventory-amount-button {
+        font-size: 20px;
+        padding: 5px;
     }
 }

@@ -6,15 +6,18 @@ import {Redirect} from 'react-router-dom';
 import './Projects.css';
 import Display from './Display';
 
+
 class Projects extends React.Component {
     constructor() {
         super()
         this.state = {
             projects: [],
+            showFavorites: false
         }
         this.deleteProject = this.deleteProject.bind(this);
         this.addProject = this.addProject.bind(this);
     }
+
 
     componentDidMount() {
         axios.get(`/api/projects`)
@@ -68,12 +71,24 @@ class Projects extends React.Component {
         })
     }
 
+    flipShowFavorites = () => {
+        this.setState({
+            showFavorites: !this.state.showFavorites
+        })
+    }
+
+
+
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+
+        const projects = this.state.showFavorites ? this.state.projects.filter(val => val.isFavorite) : this.state.projects;
+
         return (
             <div>
+                <button onClick={this.flipShowFavorites}>{this.state.showFavorites ? 'Show Projects' : 'Faves'}</button>
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
-                <Display projects={this.state.projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
+                <Display projects={projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
             </div>
         )
     }

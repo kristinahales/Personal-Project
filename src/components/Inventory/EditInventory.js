@@ -37,12 +37,12 @@ class EditInventory extends Component {
 
                     <div className='inventory-container'>  
                         {editing ? 
-                        <input placeholder='enter inventory number' name='updatedQty' value={updatedQty} onChange={this.handleChange}/> :
+                        <input className='inventory-amount-input' placeholder='Amount' name='updatedQty' value={updatedQty} onChange={this.handleChange}/> :
                         <p className='inventory-name'>{inventory.name}: {inventory.quantity}</p>
                         }
 
                         {editing ? 
-                        <button onClick={() => this.update(inventory.id)}>Save Changes</button> : 
+                        <button className='inventory-amount-button' onClick={() => this.update(inventory.id)}>Save Changes</button> : 
                         <i id='edit-button' onClick={this.flipEdit} className="far fa-edit"></i>
                         }
                     </div>  

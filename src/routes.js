@@ -14,6 +14,6 @@ export default (
         <Route path='/orders' component={Orders}/>
         <Route path='/inventory' component={Inventory}/>
         <Route path='/projects' component={Projects}/>
-        <Route path='/create' component={Create}/>
+        <Route path='/create' component={Create}/>  
     </Switch>
 );
