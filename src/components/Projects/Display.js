@@ -17,18 +17,29 @@ class Display extends React.Component {
     }
 
     closeModal() {
-        this.setState({open: false})
+        this.setState({open: false, selectedItem: null})
     }       
 
 
     renderProjects = () => {
-        return this.props.projects.map((project, i) => {
-            return (
-                <div className='project-main-container' key={project.id}>
-                <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
-                </div>
-            );
-        });
+
+        if (this.props.filteredProjects.length > 0) {
+            return this.props.filteredProjects.map((project, i) => {
+                return (
+                    <div className='project-main-container' key={project.id}>
+                    <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
+                    </div>
+                );
+            });
+        } else {
+            return this.props.projects.map((project, i) => {
+                return (
+                    <div className='project-main-container' key={project.id}>
+                    <img className='projects-image' onClick={() => this.openModal(i)} src={project.image} alt='Art project idea for children'/>
+                    </div>
+                );
+            });
+        }
     }
     
     

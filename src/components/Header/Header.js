@@ -45,7 +45,6 @@ class Header extends React.Component {
                         <div className='hamburger-links'><Link to="/" onClick={this.closeMenu} >Home</Link></div>
                         <div className='hamburger-links'><Link to="/inventory" onClick={this.closeMenu}>Inventory</Link></div>
                         <div className='hamburger-links'><Link to="/projects" onClick={this.closeMenu}>Projects</Link></div>
-                        <div className='hamburger-links'><Link to="/create" onClick={this.closeMenu}>Create</Link></div>
                         <div className='hamburger-links'><Link to="/orders" onClick={this.closeMenu}>Orders</Link></div>
                         <div className='hamburger-links'><Link to="/login" onClick={this.logout}>Logout</Link></div>
                     </div>

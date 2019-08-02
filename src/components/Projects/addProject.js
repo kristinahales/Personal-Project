@@ -61,7 +61,9 @@ class AddProject extends Component {
     }
 
     handleAddProjectItem = (newItem) => {
-        this.state.projectItems.push(newItem)
+        this.setState({
+            projectItems: [...this.state.projectItems, newItem]
+        })
     }
 
     render() {
@@ -74,10 +76,19 @@ class AddProject extends Component {
                     open={open} onClose={this.closeModal} center>
 
                 <Select handleAddProjectItem={this.handleAddProjectItem} inventory={inventory} />
+                <ul>
+                {
+                    this.state.projectItems.map(item => {
+                        return (
+                            <li key={item.inventory_id}>{item.itemName}: {item.quantity}</li>        
+                        )
+                    })
+                }
+                </ul>
                 <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
                 <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
                 <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
-                {/* <Link to='/create'>Begin Creating</Link> */}
+
                 <button onClick={this.addProject}>Add Project</button>
                 </Modal>
             </div>

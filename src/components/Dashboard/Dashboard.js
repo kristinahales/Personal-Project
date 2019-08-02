@@ -18,20 +18,20 @@ class Dashboard extends Component {
                 </div>
                 
                 <div className='dashboard-image-main-container'>
-                    <div className='dashboard-image-and-links-container'>
-                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/CraftRainbow.JPG'/>
+                    <div className='dashboard-text-and-links-container'>
                         <div className='dashboard-links-container'><Link to='/projects' className='dashboard-link'>Projects</Link></div>
+                        <p>Discover Projects</p>
                     </div>
 
-                    <div className='dashboard-image-and-links-container' >
-                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/childpainthands.JPG'/>
+                    <div className='dashboard-text-and-links-container' >
                         <div className='dashboard-links-container'><Link to='/create'className='dashboard-link'>Create</Link></div>
+                        <p>Create something</p>
                     </div>
 
                     
-                    <div className='dashboard-image-and-links-container'>
-                        <img className='dashboard-link-image' src='https://kristinapersonalproject.s3-us-west-1.amazonaws.com/crayons2.JPG'/>
+                    <div className='dashboard-text-and-links-container'>
                         <div className='dashboard-links-container' id='inventory-link'><Link to='/inventory' className='dashboard-link'>Inventory</Link></div>
+                        <p>Keep Track of Inventory</p>
                     </div>
                 </div>
 

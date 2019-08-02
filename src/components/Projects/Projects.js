@@ -12,7 +12,9 @@ class Projects extends React.Component {
         super()
         this.state = {
             projects: [],
-            showFavorites: false
+            filteredProjects: [],
+            showFavorites: false,
+            showFiltered: false,
         }
         this.deleteProject = this.deleteProject.bind(this);
         this.addProject = this.addProject.bind(this);
@@ -81,25 +83,35 @@ class Projects extends React.Component {
         axios.get(`/api/filtered/projects`)
         .then(res => {
             this.setState({
-                projects: res.data
+                filteredProjects: res.data,
+                showFiltered: true
             })
         })
         .catch(err => console.log(err))
     }
 
+    clearProjects = () => {
+        this.setState({
+            showFiltered: false,
+            filteredProjects: []
+        })
+    }
 
 
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-
+        const {filteredProjects} = this.state
         const projects = this.state.showFavorites ? this.state.projects.filter(val => val.isFavorite) : this.state.projects;
-
         return (
             <div>
-                <button onClick={this.filteredProjects}>Filtered</button>
                 <button onClick={this.flipShowFavorites}>{this.state.showFavorites ? 'Show Projects' : 'Faves'}</button>
+               
+                {
+                    this.state.showFiltered ? <button onClick={this.clearProjects}>Return</button> :
+                    <button onClick={this.filteredProjects}>Find</button>
+                }
                 <AddProject addProject={this.addProject} projects={this.state.projects}/>
-                <Display projects={projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
+                <Display filteredProjects={filteredProjects} projects={projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
             </div>
         )
     }

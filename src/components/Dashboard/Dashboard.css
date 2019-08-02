@@ -60,22 +60,15 @@
 
 
 .dashboard-image-main-container {
-    background: rgb(249,246,247);
-    border: 3px double #999;
-    box-shadow: 3px 3px 5px 6px #ccc;
-    width: 90vw;
+    width: 100vw;
     height: 600px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
 }
-.dashboard-link-image {
-    height: 200px;
-    width: 200px;
-}
 
-.dashboard-image-and-links-container {
+.dashboard-text-and-links-container {
     width: 200px;
     height: 250px;
     display: flex;
@@ -86,6 +79,7 @@
     justify-content: space-between;
     border: 1px solid rgb(2,176,215);
     box-shadow:  1.5px 1.5px 2.5px 3px #ccc;
+    background: rgb(249,246,247);
 }
 
 .dashboard-links-container {

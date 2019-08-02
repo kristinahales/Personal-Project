@@ -13,14 +13,14 @@ module.exports = {
         });
         res.status(200).send(updatedProjectList);
     },
-    async deleteProject(req, res) {
+    async deleteProject(req, res, next) {
         let {projectId} = req.params
         let {id} = req.session.user;
         const db = req.app.get('db');
         let projects = await db.delete_art_project([+projectId, id])
-        res.status(200).send(projects);
+        next();
     },
-    async addArtProject(req, res) {
+    async addArtProject(req, res, next) {
         let {name, image, instructions, projectItems} = req.body;
         let {id} = req.session.user;
         const db = req.app.get('db');
@@ -30,32 +30,14 @@ module.exports = {
             instructions,
             id
         ])
-        
-            projectItems.forEach((obj) => {
+            await Promise.all(projectItems.map(async(obj) => {
             let {inventory_id, quantity} = obj
-            db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
-        }) 
+            await db.add_inventory_to_project([project[0].id, inventory_id, +quantity, id])
+        }))
+        next();
 
-        let allProjects = await db.get_art_projects(id)
-        let currentProjectLength = await db.project_inventory_length(project[0].id)
-        console.log('firstallProjects.length', allProjects.length, projectItems.length)
-        var count = 0
-        async function lengthChecker() {
-            console.log('hit lengthChecker', currentProjectLength[0].count)
-
-            if(+currentProjectLength[0].count !== projectItems.length && count < 10) {
-                currentProjectLength = await db.project_inventory_length(project[0].id)
-                count++
-                console.log(count)
-                setTimeout(() => lengthChecker(), 500)
-            } else if (+currentProjectLength[0].count === projectItems.length) {
-                return console.log(allProjects = await db.get_art_projects(id));
-            } else {
-                console.log('error')
-            }
-    }
-        lengthChecker();   
     },
+
     async filteredProjects(req, res) {
         let {id} = req.session.user;
         const db = req.app.get('db');

@@ -5,14 +5,20 @@ class Select extends Component {
         super()
         this.state = {
             inventory_id: '',
-            quantity: ''
+            quantity: '',
+            itemName: ''
         }
     }
 
     handleSelectItem = (inventory_id) => {
         this.setState({
-            inventory_id
+            inventory_id,
+            itemName: this.findItemName(inventory_id)
         })
+    }
+
+    findItemName = (inventory_id) => {
+        return this.props.inventory.find(item => item.id === +inventory_id).name
     }
 
     handleChange = (e) => {
@@ -22,7 +28,7 @@ class Select extends Component {
     }
 
     render() {
-        const { inventory_id, quantity} = this.state;
+        const { inventory_id, quantity, itemName} = this.state;
         const {inventory}= this.props;
     return (
         <div>
@@ -30,15 +36,14 @@ class Select extends Component {
             {
                 inventory.map(item => {
                     return (
-                        <option value={item.id} >{item.name}</option>
+                        <option value={item.id}>{item.name}</option>
                     )
                 })
             }
             </select>
                 <input name='quantity' onChange={this.handleChange}/> 
-                <button onClick={() => this.props.handleAddProjectItem({inventory_id: inventory_id, quantity: quantity})}>Add</button>
-                <p>{inventory_id}</p>
-                <p>{quantity}</p>
+                <button onClick={() => this.props.handleAddProjectItem({inventory_id, quantity, itemName})}>Add</button>
+
         </div>
         )
     }

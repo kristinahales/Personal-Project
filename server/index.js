@@ -81,8 +81,8 @@ app.get('/api/user', authmw, uc.getUser);
 
 //project endpoints 
 app.get('/api/projects', pc.getAllProjects);
-app.delete('/api/delete/project/:projectId', pc.deleteProject);
-app.post('/api/addProject', pc.addArtProject);
+app.delete('/api/delete/project/:projectId', pc.deleteProject, pc.getAllProjects);
+app.post('/api/addProject', pc.addArtProject, pc.getAllProjects);
 app.get('/api/filtered/projects', pc.filteredProjects);
 
 //favorite endpoints
