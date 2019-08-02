@@ -53,17 +53,22 @@ class Login extends React.Component {
         let { user } = this.props;
         if (user.loggedIn) return <Redirect to="/" />;
         return (
-            <div className='main-container'>
-                    
+            <div>
+                <div className='main-container'>
                     <div className='input-container'>
-                        <input className='input1' placeholder='Username' name='username' value={username} onChange={this.handleChange}/>
-                        <input className='input2' type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange}/>
+                        <label className='login-label'>NAME</label><input className='input1' placeholder='Enter name' name='username' value={username} onChange={this.handleChange}/>
+                        <br/>
+                        <label className='login-label'>PASSWORD</label><input className='input2' type='password' placeholder='Enter password' name='password' value={password} onChange={this.handleChange}/>
                     
-                    <div className='button-container'>
-                        <button className='button' onClick={this.login}>Login</button>
-                        <button className='button' onClick={this.register}>Register</button>
+                        <div className='button-container'>
+                            <button className='button' onClick={this.login}>Login</button>
+                            <button className='button' onClick={this.register}>Register</button>
+                        </div>
                     </div>
                 </div>
+                    <div className='handprints-container'>
+                        <div className='handprints'></div>
+                    </div>
             </div>
         )
     }
