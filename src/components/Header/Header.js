@@ -38,7 +38,6 @@ class Header extends React.Component {
         return (
             <header className='header-container'>
                 <i onClick={menuOpen ? this.closeMenu : this.openMenu} id='hamburger' className="fas fa-bars"></i>
-                {/* <h2 className='header-text'>Discover</h2> */}
                 
                 <CheeseburgerMenu isOpen={menuOpen} closeCallback={this.closeMenu}>
                     <div>
@@ -49,6 +48,8 @@ class Header extends React.Component {
                         <div className='hamburger-links'><Link to="/login" onClick={this.logout}>Logout</Link></div>
                     </div>
                 </CheeseburgerMenu>
+                <h1 className='header-text'>Mini Masterpieces</h1>
+                <h1 className='logo'>MM</h1>
             </header>
         )
     }
