@@ -1,41 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 .main-welcome-to-dashboard-container {
-    background: palegreen;
-    border: 1px solid black;
+    /* background: palegreen; */
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: 625px;
     width: 100%;
     align-items: center;
 }
 
 .welcome-to-dashboard-container {
     text-align: center;
-    background: pink;
     height: 600px;
     width: 280px;
-    border: 3px double #999;
-    box-shadow: 3px 3px 5px 6px #ccc;
+    border: 1.5px double #999;
+    box-shadow: 1.5px 1.5px 2.5px 3px #ccc;
 }
 
 .dashboard-welcome-text {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 10px;
     margin: 0;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-    color: #3F3F3F;
+    color: #83848B;
 }
 
 .dashboard-excited-text {
+    font-family: 'Dosis', sans-serif;
     margin: 0;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
-    color: #3F3F3F;
+    color: #83848B;
 }
 
 
 .dashboard-about-text {
-    margin: 10px;
+    margin: 0;
     text-align: center;
     font-size: 22px;
     color: #3F3F3F;
@@ -50,15 +52,27 @@
     padding: 10px;
 }
 
-#child {
+#child1, #child2, #child3 {
     margin-top: 10px;
-    color: rgb(2,176,215);
     font-size: 50px;
+}
+
+#child1 {
+    color: red;
+}
+
+#child2 {
+    color: rgb(2,176,215);
+}
+
+#child3 {
+    color:  rgb(46,189,125);
 }
 
 @media (min-width: 500px) {
     .main-welcome-to-dashboard-container {
         height: 550px;
+        margin-top: 15px;
     }
     .welcome-to-dashboard-container {
         width: 350px;
@@ -68,17 +82,19 @@
 
 @media (min-width: 700px) {
     .main-welcome-to-dashboard-container {
-        height: 530px;
+        height: 500px;
     }
     .welcome-to-dashboard-container {
         width: 450px;
         height: 470px;
+        border: 3px double #999;
+        box-shadow: 3px 3px 5px 6px #ccc;
     }
 }
 
 @media (min-width: 850px) {
     .main-welcome-to-dashboard-container {
-        height: 500px;
+        height: 480px;
     }
     .welcome-to-dashboard-container {
         width: 800px;
@@ -86,6 +102,7 @@
     }
     .dashboard-welcome-text {
         font-size: 60px;
+        padding-top: 15px;
     }
     .dashboard-excited-text, .dashboard-about-text {
         font-size: 30px;
@@ -102,6 +119,7 @@
     .welcome-to-dashboard-container {
         width: 1100px;
         height: 590px;
+        padding-top: 20px;
     }
     .dashboard-welcome-text {
         font-size: 70px;
@@ -112,7 +130,7 @@
     .dashboard-information {
         font-size: 35px;
     }
-    #child {
+    #child1, #child2, #child3 {
         font-size: 80px;
     }
 }
@@ -122,3 +140,9 @@
         width: 1360px;
     }
 }
+
+
+
+
+
+

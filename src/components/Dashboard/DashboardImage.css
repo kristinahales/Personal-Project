@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Sigmar+One&display=swap');
 
 .main-dashboard-image-container {
-    background: green;
+    /* background: green; */
     width: 100vw;
     height: 250px;
     display: flex;
@@ -21,7 +21,7 @@
 
 
 .main-dashboard-quote-container {
-    background: yellow;
+    /* background: yellow; */
     width: 100vw;
     height: 150px;
     display: flex;
@@ -30,10 +30,8 @@
 }
 
 .dashboard-quote-container{
-    background: rgb(249,246,247);
-    background: pink;
-    border: 3px double #999;
-    box-shadow: 3px 3px 5px 6px #ccc;
+    border: 1.5px double #999;
+    box-shadow: 1.5px 1.5px 2.5px 3px #ccc;
     display: flex;
     margin: 20px;
     height: 100px;
@@ -43,16 +41,15 @@
 }
 
 .dashboard-quote {
-    color: rgb(2,176,215);
+    color: #3F3F3F;
     font-size: 20px;
     text-align: center;
-    font-weight: bold;
 }
 
 
 @media (min-width: 500px) {
     .main-dashboard-image-container {
-        height: 300px;
+        height: 280px;
     }
     .collage {
         height: 250px;
@@ -75,12 +72,14 @@
     }
     .dashboard-quote-container{ 
         width: 450px;
+        border: 3px double #999;
+        box-shadow: 3px 3px 5px 6px #ccc;
     }
 }
 
 @media (min-width: 850px) {
     .main-dashboard-image-container {
-        height: 450px;
+        height: 430px;
     }
     .collage {
         background-image: url('./../Images/BestCollage.JPG');
@@ -135,26 +134,3 @@
 
 
 
-
-/* @media (min-width: 830px) {
-    .dashboard-quote {
-        font-size: 25px;
-    }
-    .dashboard-quote-container {
-        width: 800px;
-    }
-}
-
-@media (min-width: 1100px) {
-    .dashboard-quote {
-        font-size: 35px;
-    }
-    .dashboard-quote-container {
-        width: 1100px;
-    }
-}
-@media (min-width: 1500px) {
-    .dashboard-quote-container {
-        width: 1360px;
-    }
-} */

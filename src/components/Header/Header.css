@@ -5,6 +5,10 @@ body {
     font-family: 'Darker Grotesque', sans-serif;
 }
 
+a {
+    color:  rgb(2,176,215);
+}
+
 .header-container {
     height: 60px;
     width: 100vw;
