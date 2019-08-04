@@ -49,6 +49,7 @@ class Header extends React.Component {
                     </div>
                 </CheeseburgerMenu>
                 <h1 className='header-text'>Mini Masterpieces</h1>
+                
                 <h1 className='logo'>MM</h1>
             </header>
         )

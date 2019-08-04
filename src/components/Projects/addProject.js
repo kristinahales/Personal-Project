@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-responsive-modal';
 import Select from './Select';
+import './AddProject.css'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -71,12 +72,26 @@ class AddProject extends Component {
         let {name, image, instructions, open, inventory} = this.state
         return (
             <div className='main-add-art-button-container'>
-                <button className='main-add-art-button' onClick={this.openModal}>Add Project to Collection</button>
-                <Modal 
-                    open={open} onClose={this.closeModal} center>
+                {
+                    this.props.showFiltered ? <button className='main-add-art-button' onClick={this.props.clearProjects}>Return</button> :
+                    <button className='main-add-art-button' onClick={this.props.filteredProjects}><i id='search-projects' className="fas fa-search"></i>Find</button>
+                }
 
-                <Select handleAddProjectItem={this.handleAddProjectItem} inventory={inventory} />
-                <ul>
+                {
+                    this.props.showFavorites ? <button className='main-add-art-button' onClick={this.props.flipShowFavorites}>Return</button> :
+                    <button className='main-add-art-button' onClick={this.props.flipShowFavorites}><i id='search-favorites' className="fas fa-heart"></i>Favorites</button>
+                }
+                
+                <button className='main-add-art-button' onClick={this.openModal}><i id='plus-button' className="fas fa-plus"></i>Add</button>
+                
+                
+                <Modal 
+                    open={open} onClose={this.closeModal}>
+                    <div className='add-new-project-container'>
+                
+                <p className='add-project-text'>Add Project Below</p> 
+                <Select handleAddProjectItem={this.handleAddProjectItem} inventory={inventory}/>
+                <ol>
                 {
                     this.state.projectItems.map(item => {
                         return (
@@ -84,12 +99,13 @@ class AddProject extends Component {
                         )
                     })
                 }
-                </ul>
-                <input placeholder='name' name='name' value={name} onChange={this.handleChange}/>
-                <input placeholder='image' name='image' value={image} onChange={this.handleChange}/>
-                <input placeholder='instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
+                </ol>
+                <input className='project-information' placeholder='Name' name='name' value={name} onChange={this.handleChange}/>
+                <input className='project-information' placeholder='URL' name='image' value={image} onChange={this.handleChange}/>
+                <input className='project-information' placeholder='Instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
 
-                <button onClick={this.addProject}>Add Project</button>
+                <button onClick={this.addProject}  className='add-finished-project-button'>Add Project</button>
+                </div>
                 </Modal>
             </div>
         )

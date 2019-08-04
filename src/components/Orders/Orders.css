@@ -13,6 +13,7 @@
     font-weight: bold;
     text-decoration: underline;
     color: rgb(46,189,125);
+
 }
 
 .orders-text1 {
@@ -35,7 +36,7 @@
     font-size: 20px;
     text-align: left;
     color: #3F3F3F;
-    border-radius: 8px;
+    border-radius: 4px;
     border: 1px solid rgb(2,176,215);
     box-shadow:  3px 3px 5px 6px #ccc;
 }
@@ -46,7 +47,7 @@
     margin-top: 15px;
     color: white;
     font-size: 20px;
-    border-radius: 8px;
+    border-radius: 4px;
     background: rgb(2,176,215, .9);
     border: 1px solid rgb(2,176,215);
 }

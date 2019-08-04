@@ -24,7 +24,7 @@
 
 .inventory-button {
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-top: 30px;
     margin-right: 10px;
     color:  rgb(46,189,125, .8);
@@ -48,7 +48,7 @@
 }
 
 .filter-input {
-    border-radius: 6px;
+    border-radius: 4px;
     font-size: 20px;
     height: 30px;
     width: 250px;
@@ -59,7 +59,7 @@
     width: 230px;
     height: 250px;
     box-shadow:  3px 3px 5px 6px #ccc;
-    border-radius: 8px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -92,6 +92,7 @@
     width: 70px;
     padding: 3px;
     text-align: center;
+    border: 1px solid gray;
 }
 
 .inventory-amount-button {
@@ -99,7 +100,7 @@
     padding: 5px;
     background: rgb(46,189,125, .8);
     color: white;
-    border-radius: 8px;
+    border-radius: 4px;
 
 }
 

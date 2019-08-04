@@ -15,7 +15,7 @@ body {
 
 .header-text {
     font-family: 'Lacquer', sans-serif;
-    color: red;
+    color: rgb(46,189,125);
     font-size: 40px;
     margin-right: 40px;
 }
@@ -34,7 +34,7 @@ body {
 @media (max-width: 550px) {
     .logo {
         font-family: 'Lacquer', sans-serif;
-        color: red;
+        color: rgb(46,189,125);
         font-size: 50px;
         margin-right: 30px;
     }
@@ -53,7 +53,8 @@ body {
         font-size: 45px;
     }
     .header-text {
-        font-size: 50px;
+        font-size: 45px;
+        margin-right: 35px;
     }
 }
 @media (min-width: 1300px) {

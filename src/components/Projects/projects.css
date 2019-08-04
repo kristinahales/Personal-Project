@@ -1,7 +1,7 @@
 .main-add-art-button {
     padding: 10px;
     font-size: 15px;
-    border-radius: 8px;
+    border-radius: 4px;
     color: rgb(46,189,125, .8);
     margin: 10px;
     background: white;
@@ -14,9 +14,12 @@
 }
 
 .main-add-art-button-container {
-    background: blue;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+}
+
+#search-projects, #search-favorites, #plus-button {
+    margin-right: 3px;
 }
 
 .show-projects-container {
@@ -34,7 +37,7 @@
     width: 275px;
     height: 275px;
     margin: 15px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 .projects-buttons {
@@ -49,13 +52,13 @@
     color: white;
     padding: 5px;
     width: 100px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 .projects-image {
     height: 250px;
     width: 160px;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow:  3px 3px 5px 6px #ccc;
     padding: 10px;
 }
@@ -65,8 +68,12 @@
     color: #3F3F3F;
 }
 
-
-@media (min-width: 1000px) {
+@media (min-width: 440px) {
+    .main-add-art-button-container {
+        justify-content: flex-end;
+    }
+}
+@media (min-width: 1100px) {
     .modal-text {
         font-size: 25px;
     }

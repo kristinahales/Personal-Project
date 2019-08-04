@@ -99,18 +99,13 @@ class Projects extends React.Component {
 
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
-        const {filteredProjects} = this.state
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        const {filteredProjects, showFavorites, showFiltered} = this.state
         const projects = this.state.showFavorites ? this.state.projects.filter(val => val.isFavorite) : this.state.projects;
         return (
             <div>
-                <button onClick={this.flipShowFavorites}>{this.state.showFavorites ? 'Show Projects' : 'Faves'}</button>
-               
-                {
-                    this.state.showFiltered ? <button onClick={this.clearProjects}>Return</button> :
-                    <button onClick={this.filteredProjects}>Find</button>
-                }
-                <AddProject addProject={this.addProject} projects={this.state.projects}/>
+        
+                <AddProject addProject={this.addProject} projects={this.state.projects} clearProjects={this.clearProjects} filteredProjects={this.filteredProjects} showFiltered={showFiltered} flipShowFavorites={this.flipShowFavorites} showFavorites={showFavorites}/>
                 <Display filteredProjects={filteredProjects} projects={projects} deleteProject={this.deleteProject} addToFavorites={this.addToFavorites} deleteFavorite={this.deleteFavorite}/>
             </div>
         )

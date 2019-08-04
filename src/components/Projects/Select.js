@@ -32,7 +32,7 @@ class Select extends Component {
         const {inventory}= this.props;
     return (
         <div>
-            <select name='inventory_id' onChange={(e) =>this.handleSelectItem(e.target.value)}>   
+            <select className='project-items-select' name='inventory_id' onChange={(e) =>this.handleSelectItem(e.target.value)}>
             {
                 inventory.map(item => {
                     return (
@@ -41,8 +41,8 @@ class Select extends Component {
                 })
             }
             </select>
-                <input name='quantity' onChange={this.handleChange}/> 
-                <button onClick={() => this.props.handleAddProjectItem({inventory_id, quantity, itemName})}>Add</button>
+                <input className='project-items-quantity' placeholder='Qty' name='quantity' onChange={this.handleChange}/> 
+                <button className='add-project-items-button' onClick={() => this.props.handleAddProjectItem({inventory_id, quantity, itemName})}>Add</button>
 
         </div>
         )
