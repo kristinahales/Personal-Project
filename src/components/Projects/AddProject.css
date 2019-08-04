@@ -1,9 +1,8 @@
 .add-new-project-container {
-    height: 500px;
+    height: 800px;
     width: 230px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
 
@@ -61,7 +60,7 @@ ol li {
 
 @media (min-width: 700px) {
     .add-new-project-container {
-        height: 600px;
+        height: 900px;
         width: 400px;
     }
     .add-project-text {

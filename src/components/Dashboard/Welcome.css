@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 .main-welcome-to-dashboard-container {
-    /* background: palegreen; */
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     height: 625px;

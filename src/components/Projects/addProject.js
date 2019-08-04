@@ -102,7 +102,7 @@ class AddProject extends Component {
                 </ol>
                 <input className='project-information' placeholder='Name' name='name' value={name} onChange={this.handleChange}/>
                 <input className='project-information' placeholder='URL' name='image' value={image} onChange={this.handleChange}/>
-                <input className='project-information' placeholder='Instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
+                <input cols='10' className='project-information' placeholder='Instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
 
                 <button onClick={this.addProject}  className='add-finished-project-button'>Add Project</button>
                 </div>

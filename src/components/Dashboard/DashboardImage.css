@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Sigmar+One&display=swap');
 
 .main-dashboard-image-container {
-    /* background: green; */
     width: 100vw;
     height: 250px;
     display: flex;
@@ -21,7 +20,6 @@
 
 
 .main-dashboard-quote-container {
-    /* background: yellow; */
     width: 100vw;
     height: 150px;
     display: flex;

@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 class Dashboard extends Component {
     render() {
-        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         return (
             <div className='main-dashboard-container'>
                 <div className='main-dashboard-image-container'>
@@ -20,7 +20,7 @@ class Dashboard extends Component {
                         <p className='dashboard-excited-text'>so excited you stopped by!</p>
                         <br />
                         <p className='dashboard-about-text'>About Mini Masterpieces:</p>
-                        <p className='dashboard-information'>Mini masterpieces was designed to help educators of young children have the necessary tools to implement artistic activities in the classroom. Creating art expands a child's ability to interact with the world around them, and provides a new set of skills for self-expression and communication. Not only does art help to develop the right side of the brain, it also cultivates important skills that benefit a child's development.</p>
+                        <main className='dashboard-information'>Mini masterpieces was designed to help educators of young children have the necessary tools to implement artistic activities in the classroom. Creating art expands a child's ability to interact with the world around them, and provides a new set of skills for self-expression and communication. Not only does art help to develop the right side of the brain, it also cultivates important skills that benefit a child's development.</main>
                         <p id='child1' className="fas fa-child"></p>
                         <p id='child2' className="fas fa-child"></p>
                         <p id='child3' className="fas fa-child"></p>                        

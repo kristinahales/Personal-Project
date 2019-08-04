@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
 .main-container {
-    /* background: green; */
-    /* margin-top: 5px; */
     width: 100vw;
     height: 300px;
     display: flex;
@@ -12,7 +10,6 @@
 
 .input-container {
     background: white;
-    /* background: yellow; */
     width: 230px;
     color: #3F3F3F;
     padding: 20px;
