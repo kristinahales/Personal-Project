@@ -13,7 +13,8 @@ CREATE TABLE inventory (
 CREATE TABLE user_inventory(
     user_id int references users(id),
     inventory_id int references inventory(id),
-    quantity integer
+    quantity integer,
+    primary key (user_id, inventory_id)
 );
 
 CREATE TABLE projects (
@@ -28,7 +29,8 @@ CREATE TABLE projects (
 CREATE TABLE project_inventory( 
     inventory_id int references inventory(id),
     project_id int references projects(id),
-    quantity text
+    quantity integer,
+    primary key (inventory_id, project_id)
 )
 
 

@@ -22,7 +22,7 @@ class Display extends React.Component {
 
 
     renderProjects = () => {
-        if (this.props.filteredProjects.length > 0) {
+        if (this.props.filteredProjects) {
             return this.props.filteredProjects.map((project, i) => {
                 return (
                     <div className='project-main-container' key={project.id}>
@@ -44,7 +44,7 @@ class Display extends React.Component {
 
     renderModal = () => {
         if(this.state.selectedItem !== null) {
-            const project = this.props.filteredProjects[this.state.selectedItem] || this.props.projects[this.state.selectedItem];
+            const project = this.props.filteredProjects ? this.props.filteredProjects[this.state.selectedItem] : this.props.projects[this.state.selectedItem];
             return (
                 <div>
                     <h2 className='modal-title'>{project.name}</h2>

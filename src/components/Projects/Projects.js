@@ -12,7 +12,7 @@ class Projects extends React.Component {
         super()
         this.state = {
             projects: [],
-            filteredProjects: [],
+            filteredProjects: null,
             showFavorites: false,
             showFiltered: false,
         }
@@ -93,7 +93,7 @@ class Projects extends React.Component {
     clearProjects = () => {
         this.setState({
             showFiltered: false,
-            filteredProjects: []
+            filteredProjects: null
         })
     }
 
