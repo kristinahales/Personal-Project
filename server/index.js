@@ -2,6 +2,7 @@ require('dotenv').config({ path: __dirname + '/../.env' })
 const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
+const path = require('path');
 const uc = require('./controllers/user_controller');
 const pc = require('./controllers/projects_controller');
 const ic = require('./controllers/inventory_controller');
@@ -22,6 +23,10 @@ app.use(
     })
 );
 
+app.use(express.static(__dirname +'/../build'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(--__dirname, '../build/index.html'));
+});
 
 massive(CONNECTION_STRING)
 .then(db => {
