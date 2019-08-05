@@ -61,10 +61,10 @@ class Display extends React.Component {
                     <div className='projects-buttons'>
                     {
                         !project.isFavorite ? <i id='favorite-button' className="fas fa-heart" onClick={() => this.props.addToFavorites(project.id)} style={{cursor: 'pointer', color: 'black'}}></i> :
-                        <i className="fas fa-heart" id='favorite-button' onClick={() => this.props.deleteFavorite(project.id)} style={{cursor: 'pointer', color: 'red'}}></i>
+                        <i className="fas fa-heart" id='favorite-button' onClick={() => {this.props.deleteFavorite(project.id); this.closeModal()}} style={{cursor: 'pointer', color: 'red'}}></i>
                     }
                     
-                    {!project.is_public ? <button className='delete-art-project-button' onClick={() => this.props.deleteProject(project.id)}>Delete Project</button>
+                    {!project.is_public ? <button className='delete-art-project-button' onClick={() => {this.props.deleteProject(project.id); this.closeModal()}}>Delete Project</button>
                     : null
                     }
                     </div>

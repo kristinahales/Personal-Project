@@ -1,5 +1,5 @@
 .add-new-project-container {
-    height: 800px;
+    height: 1200px;
     width: 230px;
     display: flex;
     align-items: center;
@@ -38,15 +38,23 @@ ol li {
     height: 30px;
 }
 
-.project-information::placeholder, .project-items-quantity::placeholder {
+.project-information::placeholder, .project-items-quantity::placeholder, .project-information-instructions::placeholder {
+    font-size: 15px;
     text-align: center;
     color: #3F3F3F;
 }
 
-.project-information {
+.project-information, .project-information-instructions  {
     margin-top: 15px;
     border: 1px solid rgb(2,176,215);
     box-shadow:  1.5px 1.5px 2.5px 3px #ccc;
+}
+
+.project-information-instructions {
+    border-radius: 4px;
+    width: 190px;
+    height: 200px;
+    font-size: 15px;
 }
 
 .add-finished-project-button, .add-project-items-button {
@@ -56,6 +64,10 @@ ol li {
     color: white;
     padding: 6px;
     font-size: 15px;
+}
+
+textarea {
+    font-size: inherit;
 }
 
 @media (min-width: 700px) {
@@ -79,8 +91,15 @@ ol li {
         font-size: 25px;
         height: 40px;
     }
+    .project-information-instructions {
+        width: 310px;
+        font-size: 25px;
+    }
     .add-finished-project-button, .add-project-items-button {
         font-size: 20px;
         padding: 10px;
+    }
+    .project-information::placeholder, .project-items-quantity::placeholder, .project-information-instructions::placeholder {
+        font-size: 25px;
     }
 }
