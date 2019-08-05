@@ -23,10 +23,6 @@ app.use(
     })
 );
 
-app.use(express.static(__dirname +'/../build'));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(--__dirname, '../build/index.html'));
-});
 
 massive(CONNECTION_STRING)
 .then(db => {
@@ -100,3 +96,8 @@ app.delete('/api/deleteFavorite/:projectId', fc.deleteFavorite);
 app.get('/api/inventory', ic.getAllInventory);
 app.put('/api/inventory/edit/:inventoryId', ic.editQuantity);
 app.get('/api/lowInventory', ic.getLowInventory);
+
+app.use(express.static(__dirname +'/../build'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
