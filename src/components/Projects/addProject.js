@@ -3,7 +3,6 @@ import Modal from 'react-responsive-modal';
 import Select from './Select';
 import './AddProject.css'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 
 class AddProject extends Component {
     constructor() {

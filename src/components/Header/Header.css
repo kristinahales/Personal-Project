@@ -45,12 +45,12 @@ a {
     .header-text {
         display: none;
     }
-    
 }
 @media (min-width: 550px) {
     .logo {
         display: none;
     }
+
 }
 @media (min-width: 900px) {
     #hamburger {

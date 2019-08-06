@@ -37,7 +37,6 @@ module.exports = {
         next();
 
     },
-
     async filteredProjects(req, res) {
         let {id} = req.session.user;
         const db = req.app.get('db');

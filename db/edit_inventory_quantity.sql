@@ -1,6 +1,6 @@
 INSERT INTO user_inventory (inventory_id, quantity, user_id)
 VALUES ($1, $2, $3)
-ON CONFLICT  (inventory_id, user_id)
+ON CONFLICT (inventory_id, user_id)
 DO 
 UPDATE
 SET quantity = $2; 
