@@ -3,6 +3,8 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import './Orders.css'
+import {toast} from 'react-toastify';
+
 
 class Orders extends Component {
     constructor() {
@@ -13,7 +15,7 @@ class Orders extends Component {
             email: '',
             message: '',
             lowInventory: [],
-            textValue: ''
+            textValue: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -37,9 +39,8 @@ class Orders extends Component {
     async handleSubmit(e) {
         e.preventDefault()
         const {name, classroom, email, textValue, message} = this.state
-    
         this.reset()
-        
+        toast.success('Email has been successfully sent!');    
         await axios.post('/api/form', {
             name, 
             classroom,
@@ -47,7 +48,7 @@ class Orders extends Component {
             message,
             textValue
             })
-        }
+    }
     
     reset() {
         this.setState({
@@ -57,6 +58,7 @@ class Orders extends Component {
         message: ''
         })
     };
+    
 
     render() {
         if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>

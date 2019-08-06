@@ -104,7 +104,7 @@ class AddProject extends Component {
                 <input className='project-information' placeholder='URL' name='image' value={image} onChange={this.handleChange}/>
                 <textarea className='project-information-instructions' placeholder='Instructions' name='instructions' value={instructions} onChange={this.handleChange}/>
 
-                <button onClick={this.addProject}  className='add-finished-project-button'>Add Project</button>
+                <button onClick={() => {this.addProject(); this.closeModal()}}  className='add-finished-project-button'>Add Project</button>
                 </div>
                 </Modal>
             </div>

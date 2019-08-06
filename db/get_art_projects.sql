@@ -10,6 +10,7 @@ select p.*,
 ) as inventory
 from projects as p
 WHERE p.user_id = $1
-OR p.is_public = true;
+OR p.is_public = true
+ORDER BY p.id DESC;
 
 

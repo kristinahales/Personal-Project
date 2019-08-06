@@ -72,7 +72,7 @@ textarea {
 
 @media (min-width: 700px) {
     .add-new-project-container {
-        height: 900px;
+        height: 1200px;
         width: 400px;
     }
     .add-project-text {
@@ -97,6 +97,42 @@ textarea {
     }
     .add-finished-project-button, .add-project-items-button {
         font-size: 20px;
+        padding: 10px;
+    }
+    .project-information::placeholder, .project-items-quantity::placeholder, .project-information-instructions::placeholder {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .add-new-project-container {
+        height: 1200px;
+        width: 600px;
+    }
+    .add-project-text {
+        font-size: 40px;
+    }
+    .project-items-select {
+        width: 220px;
+    }  
+    .project-items-quantity {
+        width: 90px;
+    } 
+    ol li {
+        font-size: 40px;
+    }
+    .project-items-select, .project-items-quantity, .project-information {
+        font-size: 30px;
+        height: 40px;
+    }
+    .project-information {
+        width: 400px;
+    }
+    .project-information-instructions {
+        width: 400px;
+    }
+    .add-finished-project-button, .add-project-items-button {
+        font-size: 25px;
         padding: 10px;
     }
     .project-information::placeholder, .project-items-quantity::placeholder, .project-information-instructions::placeholder {

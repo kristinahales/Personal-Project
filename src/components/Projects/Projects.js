@@ -99,7 +99,7 @@ class Projects extends React.Component {
 
 
     render() {
-        if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
+        // if (!this.props.user.user.loggedIn) return <Redirect to='/login'/>
         const {filteredProjects, showFavorites, showFiltered} = this.state
         const projects = this.state.showFavorites ? this.state.projects.filter(val => val.isFavorite) : this.state.projects;
         return (
